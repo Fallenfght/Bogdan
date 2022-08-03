@@ -150,9 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		element.removeEventListener('contextmenu', rightClick);
 		gameContainer.classList.add('_finish');
 	}
-	let maxStack = 300;
-	let currentStack = {};
-	currentStack = 1;
 	function openEmpty(array) {
 		for (const key in array) {
 			const element = array[key];
@@ -169,16 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				element.classList.add('_open');
 				element.open = 1;
 				let nextEmpty = collectActiveCells(element);
-				if (currentStack < maxStack) {
-					currentStack++;
-					openEmpty(nextEmpty);
-				} else {
-					setTimeout(function(){
-						currentStack = 1;
-						openEmpty(nextEmpty);
-					}, 0);
-				}
-				
+				setTimeout(function(){openEmpty(nextEmpty)}, 0);
 			}
 		}
 	}
