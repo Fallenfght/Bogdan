@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	const bombsRemainNum = document.querySelector('.game__bombs-remain-num');
 	let pointsToWin = {};
 	let bombs = {};
+	let newRow = {};
 	startButton.addEventListener('click', function () {
 		const rows = document.querySelector('.game__input-rows>input').value;
 		bombs = document.querySelector('.game__input-bombs>input').value;
 		const cellsVal = document.querySelector('.game__input-cells>input').value;
+		finish(gameContainer);
 		gameContainer.innerHTML = '';
 		bombsRemainNum.textContent = bombs;
 		gameContainer.className = 'game__container';
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			gameContainer.insertAdjacentHTML('afterbegin', row);
 		}
 		//cells
-		let newRow = gameContainer.querySelectorAll('.game__row');
+		newRow = gameContainer.querySelectorAll('.game__row');
 		for (let index = 0; index < newRow.length; index++) {
 			const element = newRow[index];
 			for (let index = 0; index < cellsVal; index++) {
@@ -28,45 +30,61 @@ document.addEventListener('DOMContentLoaded', function() {
 				element.insertAdjacentHTML('afterbegin', cell);
 			}
 		}
-		//set bombs
-		for (let index = 0; index < bombs; index++) {
-			let randomRow = getRandomInt(newRow.length);
-			let newCell  = newRow[randomRow].querySelectorAll('.game__cell');
-			let randomCell = newCell[getRandomInt(newCell.length)];
-			if (randomCell.bomb == 1) {
-				index--;
-			} else {
-				randomCell.bomb = 1;
-			}
-		}
-		let allCells = document.querySelectorAll('.game__cell');
-		let bombsCells = Array.prototype.slice.call(allCells);
-		for (let index = 0; index < bombsCells.length; index++) {
-			const element = bombsCells[index];
-			element.bombSum = 0;
-			element.open = 0;
-			if (element.bomb != 1) {
-				bombsCells.splice(index, 1);
-				index--;
-			}
-		}
-		for (let index = 0; index < bombsCells.length; index++) {
-			const element = bombsCells[index];
-			let activeCells = collectActiveCells(element);
-			setPoints(activeCells);
-		}
-		pointsToWin = Array.prototype.slice.call(allCells);
-		for (let index = 0; index < pointsToWin.length; index++) {
-			const element = pointsToWin[index];
-			if (element.bombSum == 0) {
-				pointsToWin.splice(index, 1);
-				index--;
-			}
-		}
-		pointsToWin = pointsToWin.length;
+		gameContainer.addEventListener('click', startClick);
 		gameContainer.addEventListener('click', leftClick);
 		gameContainer.addEventListener('contextmenu', rightClick);
 	});
+	function startClick(e) {
+		e.preventDefault();
+		const target = e.target;
+		if (target.classList.contains('game__cell')) {
+			//first open
+			let firstClickCells = collectActiveCells(target);
+			for (const key in firstClickCells) {
+				const element = firstClickCells[key];
+				if (element) {
+					element.firstClick = 1;
+				}
+			}
+			//set bombs
+			for (let index = 0; index < bombs; index++) {
+				let randomRow = getRandomInt(newRow.length);
+				let newCell  = newRow[randomRow].querySelectorAll('.game__cell');
+				let randomCell = newCell[getRandomInt(newCell.length)];
+				if (randomCell.bomb == 1 || randomCell.firstClick == 1) {
+					index--;
+				} else {
+					randomCell.bomb = 1;
+				}
+			}
+			let allCells = document.querySelectorAll('.game__cell');
+			let bombsCells = Array.prototype.slice.call(allCells);
+			for (let index = 0; index < bombsCells.length; index++) {
+				const element = bombsCells[index];
+				element.bombSum = 0;
+				element.open = 0;
+				if (element.bomb != 1) {
+					bombsCells.splice(index, 1);
+					index--;
+				}
+			}
+			for (let index = 0; index < bombsCells.length; index++) {
+				const element = bombsCells[index];
+				let activeCells = collectActiveCells(element);
+				setPoints(activeCells);
+			}
+			pointsToWin = Array.prototype.slice.call(allCells);
+			for (let index = 0; index < pointsToWin.length; index++) {
+				const element = pointsToWin[index];
+				if (element.bombSum == 0) {
+					pointsToWin.splice(index, 1);
+					index--;
+				}
+			}
+			pointsToWin = pointsToWin.length;
+			gameContainer.removeEventListener('click', startClick);
+		};
+	};
 	function leftClick(e) {
 		e.preventDefault();
 		const target = e.target;
@@ -142,7 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				element.classList.add('_open');
 				element.open = 1;
 				let nextEmpty = collectActiveCells(element);
-				openEmpty(nextEmpty);
+				//setTimeout(openEmpty(nextEmpty), 0);
+				setTimeout(function(){ openEmpty(nextEmpty) }, 0);
+				//openEmpty(nextEmpty);
 			}
 		}
 	}
