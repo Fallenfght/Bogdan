@@ -17,9 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		gameContainer.innerHTML = '';
 		bombsRemainNum.textContent = bombs;
 		gameContainer.className = 'game__container';
+		gameContainer.innerHTML = '<div class="game__box"></div>';
+		let gameBox = gameContainer.querySelector('.game__box');
 		//rows
 		for (let index = 0; index < rows; index++) {
-			gameContainer.insertAdjacentHTML('afterbegin', row);
+			gameBox.insertAdjacentHTML('afterbegin', row);
 		}
 		//cells
 		newRow = gameContainer.querySelectorAll('.game__row');
@@ -156,13 +158,15 @@ document.addEventListener('DOMContentLoaded', function() {
 				element.open = 1;
 				element.textContent = element.bombSum;
 				pointsToWin--;
+				if (pointsToWin == 0) {
+					win();
+					finish(this);
+				}
 			} else if (element && !element.bomb && !element.bombSum && !element.open && !element.flag) {
 				element.classList.add('_open');
 				element.open = 1;
 				let nextEmpty = collectActiveCells(element);
-				//setTimeout(openEmpty(nextEmpty), 0);
-				setTimeout(function(){ openEmpty(nextEmpty) }, 0);
-				//openEmpty(nextEmpty);
+				setTimeout(function(){openEmpty(nextEmpty)}, 0);
 			}
 		}
 	}
