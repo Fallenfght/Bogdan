@@ -287,6 +287,12 @@ body {
           animation: blinking 0.5s forwards linear infinite alternate, redding 2s 2s forwards ease;
 }
 
+.game__cell.flag svg {
+  pointer-events: none;
+  height: 40px;
+  width: 20px;
+}
+
 .game__end-block._lose {
   color: red;
 }
