@@ -190,6 +190,10 @@ body {
 }
 
 .game__input label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   display: block;
   margin: 0px 10px 0px 0px;
   font-size: 22px;
