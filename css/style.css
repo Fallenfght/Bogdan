@@ -148,6 +148,18 @@ body {
   min-height: 30px;
 }
 
+.button_difficult {
+  font-size: 20px;
+  line-height: 30px;
+  background: #7045AC;
+}
+
+.button_difficult._active {
+  -webkit-box-shadow: 0 0 6px 6px #fff inset;
+          box-shadow: 0 0 6px 6px #fff inset;
+  pointer-events: none;
+}
+
 .main {
   padding: 80px 0;
 }
@@ -202,7 +214,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
   background: #003366;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -213,6 +224,10 @@ body {
 .game__container._finish {
   cursor: default;
   pointer-events: none;
+}
+
+.game__box {
+  padding: 40px 0;
 }
 
 .game__row {
@@ -299,6 +314,27 @@ body {
 
 .game__end-block._lose {
   color: red;
+}
+
+.difficulties {
+  padding: 15px;
+  border: 1px solid #A139A5;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 0 30px;
+}
+
+.difficulties__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -30px -15px;
+}
+
+.difficulties__item {
+  margin: 0 30px 15px;
 }
 
 @-webkit-keyframes blinking {
@@ -458,6 +494,26 @@ body {
 }
 
 @media (min-width: 1024px) {
+  .button_difficult {
+    -webkit-transition: background 0.3s ease;
+    -o-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+  }
+
+  .button_difficult:hover {
+    background: #3C1670;
+  }
+
+  .button-start {
+    -webkit-transition: background 0.3s ease;
+    -o-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+  }
+
+  .button-start:hover {
+    background: #9D76D5;
+  }
+
   .game__cell:hover:after {
     content: "";
     position: absolute;

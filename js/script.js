@@ -5,21 +5,25 @@ document.addEventListener('DOMContentLoaded', function() {
 	const startButton = document.querySelector('.button-start');
 	let row = '<div class="game__row"></div>';
 	let cell = '<div class="game__cell"></div>';
-	const bombsRemainNum = document.querySelector('.game__bombs-remain-num');
+	const bombRemainBlock = '<div class="game__bombs-remain"><span class="game__bombs-remain-text">Бомб осталось:</span><span class="game__bombs-remain-num">0</span></div>';
 	let pointsToWin = {};
 	let bombs = {};
+	let bombsRemainNum = {};
+	let bombsForClick = {};
 	let newRow = {};
 	let bombsCells = {};
 	startButton.addEventListener('click', function () {
 		const rows = document.querySelector('.game__input-rows>input').value;
 		bombs = document.querySelector('.game__input-bombs>input').value;
+		bombsForClick = bombs;
 		const cellsVal = document.querySelector('.game__input-cells>input').value;
 		finish(gameContainer);
-		gameContainer.innerHTML = '';
-		bombsRemainNum.textContent = bombs;
-		gameContainer.className = 'game__container';
 		gameContainer.innerHTML = '<div class="game__box"></div>';
+		gameContainer.className = 'game__container';
 		let gameBox = gameContainer.querySelector('.game__box');
+		gameContainer.insertAdjacentHTML('afterbegin', bombRemainBlock);
+		bombsRemainNum = document.querySelector('.game__bombs-remain-num');
+		bombsRemainNum.textContent = bombsForClick;
 		//rows
 		for (let index = 0; index < rows; index++) {
 			gameBox.insertAdjacentHTML('afterbegin', row);
@@ -138,14 +142,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				target.innerHTML = flag;
 				target.classList.add('flag');
 				target.flag = 1;
-				bombs--;
-				bombsRemainNum.textContent = bombs;
+				bombsForClick--;
+				bombsRemainNum.textContent = bombsForClick;
 			} else {
 				target.innerHTML = '';
 				target.classList.remove('flag');
 				target.flag = 0;
 				bombs++;
-				bombsRemainNum.textContent = bombs;
+				bombsRemainNum.textContent = bombsForClick;
 			}
 		}
 		return false;
