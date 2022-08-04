@@ -227,6 +227,7 @@ body {
 }
 
 .game__cell {
+  position: relative;
   cursor: pointer;
   background: #fded57;
   display: -webkit-box;
@@ -252,10 +253,6 @@ body {
 .game__cell._open {
   pointer-events: none;
   background: #FFCC33;
-}
-
-.game__cell.bomb {
-  position: relative;
 }
 
 .game__cell.bomb._active .bomb-svg {
@@ -430,9 +427,53 @@ body {
   }
 }
 
+@-webkit-keyframes hoverAfter {
+  0% {
+    width: 1%;
+    height: 1%;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes hoverAfter {
+  0% {
+    width: 1%;
+    height: 1%;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media (min-width: 490px) {
   .container {
     padding: 0 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__cell:hover:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: inherit;
+    -webkit-box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.9);
+    border: rgba(255, 255, 255, 0.9) 3px solid;
+    -webkit-animation: hoverAfter 0.2s ease;
+            animation: hoverAfter 0.2s ease;
   }
 }
 @supports (-webkit-appearance:none){
@@ -440,6 +481,14 @@ body {
 }
 
  @media (min-width: 490px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media (min-width: 1024px){
 
 @supports (-webkit-appearance:none){
 
