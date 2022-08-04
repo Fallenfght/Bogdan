@@ -30,8 +30,6 @@ aside {
 
 html,
 body {
-  height: 100%;
-  width: 100%;
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
@@ -203,7 +201,7 @@ body {
 }
 
 .game__container {
-  overflow: auto;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -310,6 +308,19 @@ body {
   pointer-events: none;
   height: 40px;
   width: 20px;
+}
+
+.game__bombs-remain {
+  padding: 5px 15px;
+  background: inherit;
+  z-index: 2;
+  position: sticky;
+  top: 0px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-size: 16px;
+  -webkit-box-shadow: 0 0 4px 2px #fff;
+          box-shadow: 0 0 4px 2px #fff;
 }
 
 .game__end-block._lose {

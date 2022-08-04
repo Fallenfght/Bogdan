@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const startButton = document.querySelector('.button-start');
 	let row = '<div class="game__row"></div>';
 	let cell = '<div class="game__cell"></div>';
-	const bombRemainBlock = '<div class="game__bombs-remain"><span class="game__bombs-remain-text">Бомб осталось:</span><span class="game__bombs-remain-num">0</span></div>';
+	const bombRemainBlock = '<div class="game__bombs-remain"><span class="game__bombs-remain-text">Бомб осталось: </span><span class="game__bombs-remain-num">0</span></div>';
 	let pointsToWin = {};
 	let bombs = {};
 	let bombsRemainNum = {};
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				target.innerHTML = '';
 				target.classList.remove('flag');
 				target.flag = 0;
-				bombs++;
+				bombsForClick++;
 				bombsRemainNum.textContent = bombsForClick;
 			}
 		}
