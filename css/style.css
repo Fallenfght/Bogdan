@@ -124,6 +124,10 @@ body {
 }
 
 .button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -506,9 +510,11 @@ body {
 
 @media (min-width: 1024px) {
   .button_difficult {
-    -webkit-transition: background 0.3s ease;
-    -o-transition: background 0.3s ease;
-    transition: background 0.3s ease;
+    -webkit-transition: background 0.3s ease, -webkit-box-shadow 0.3s ease;
+    transition: background 0.3s ease, -webkit-box-shadow 0.3s ease;
+    -o-transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
   }
 
   .button_difficult:hover {

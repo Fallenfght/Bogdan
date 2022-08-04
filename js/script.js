@@ -252,4 +252,56 @@ document.addEventListener('DOMContentLoaded', function() {
 	function getRandomInt(max) {
 		return Math.floor(Math.random() * max);
 	}
+	let difficulties = {
+		noob: {
+			container: document.querySelector('.difficulties__noob'),
+			rows: 9,
+			cells: 9,
+			bombs: 10,
+		},
+		easy: {
+			container: document.querySelector('.difficulties__easy'),
+			rows: 16,
+			cells: 16,
+			bombs: 40,
+		},
+		addvanced: {
+			container: document.querySelector('.difficulties__addvanced'),
+			rows: 30,
+			cells: 16,
+			bombs: 99,
+		},
+		genius: {
+			container: document.querySelector('.difficulties__genius'),
+			rows: 50,
+			cells: 50,
+			bombs: 500,
+		},
+		alien: {
+			container: document.querySelector('.difficulties__alien'),
+			rows: 100,
+			cells: 100,
+			bombs: 2000,
+		},
+	}
+	const rowsInput = document.querySelector('.game__input-rows>input');
+	const cellsInput = document.querySelector('.game__input-cells>input');
+	const bombsInput = document.querySelector('.game__input-bombs>input');
+	setDifficulties(difficulties);
+	function setDifficulties(difficulties) {
+		for (const key in difficulties) {
+			const element = difficulties[key];
+			element.container.addEventListener('click', function (e) {
+				e.preventDefault();
+				rowsInput.value = element.rows;
+				cellsInput.value = element.cells;
+				bombsInput.value = element.bombs;
+				for (const key in difficulties) {
+					const element = difficulties[key];
+					element.container.classList.remove('_active');
+				}
+				element.container.classList.add('_active');
+			});
+		};
+	};
 });
