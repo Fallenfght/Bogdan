@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let pointsToWin = {};
 	let bombs = {};
 	let newRow = {};
+	let bombsCells = {};
 	startButton.addEventListener('click', function () {
 		const rows = document.querySelector('.game__input-rows>input').value;
 		bombs = document.querySelector('.game__input-bombs>input').value;
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 			let allCells = document.querySelectorAll('.game__cell');
-			let bombsCells = Array.prototype.slice.call(allCells);
+			bombsCells = Array.prototype.slice.call(allCells);
 			for (let index = 0; index < bombsCells.length; index++) {
 				const element = bombsCells[index];
 				element.bombSum = 0;
@@ -108,8 +109,12 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			} else if (target.bomb) {
 				//end game =================================================================================================
-				target.innerHTML = svgBomb;
-				target.classList.add('bomb');
+				for (let index = 0; index < bombsCells.length; index++) {
+					const element = bombsCells[index];
+					element.insertAdjacentHTML('afterbegin', svgBomb);
+					element.classList.add('bomb');
+				}
+				target.classList.add("_active");
 				lose();
 				finish(this);
 			} else {
@@ -145,11 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		return false;
 	}
-	function finish(element) {
-		element.removeEventListener('click', leftClick);
-		element.removeEventListener('contextmenu', rightClick);
-		gameContainer.classList.add('_finish');
-	}
 	let maxStack = 300;
 	let currentStack = {};
 	currentStack = 1;
@@ -178,17 +178,23 @@ document.addEventListener('DOMContentLoaded', function() {
 						openEmpty(nextEmpty);
 					}, 0);
 				}
-				
 			}
 		}
 	}
-	function win(params) {
-		let winWindow = document.createElement('div');
-		winWindow.innerHTML = '<p>Победа</p>';
-		winWindow.classList.add('game__end-block', '_win');
-		gameContainer.append(winWindow);
+	function finish(element) {
+		element.removeEventListener('click', leftClick);
+		element.removeEventListener('contextmenu', rightClick);
+		gameContainer.classList.add('_finish');
 	}
-	function lose(params) {
+	function win() {
+		if (!gameContainer.classList.contains('_finish')) {
+			let winWindow = document.createElement('div');
+			winWindow.innerHTML = '<p>Победа</p>';
+			winWindow.classList.add('game__end-block', '_win');
+			gameContainer.append(winWindow);
+		}
+	}
+	function lose() {
 		let loseWindow = document.createElement('div');
 		loseWindow.innerHTML = '<p>Поражение</p>';
 		loseWindow.classList.add('game__end-block', '_lose');

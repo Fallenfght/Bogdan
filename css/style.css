@@ -258,17 +258,18 @@ body {
   position: relative;
 }
 
-.game__cell.bomb .bomb-svg {
+.game__cell.bomb._active .bomb-svg {
   -webkit-animation: timer 1.5s 2s ease forwards, fadeOut 1s 2.5s ease forwards;
           animation: timer 1.5s 2s ease forwards, fadeOut 1s 2.5s ease forwards;
 }
 
-.game__cell.bomb .bomb-svg path {
+.game__cell.bomb._active .bomb-svg path {
   -webkit-animation: redding 2s 2s forwards ease;
           animation: redding 2s 2s forwards ease;
 }
 
-.game__cell.bomb .boom-svg {
+.game__cell.bomb._active .boom-svg {
+  display: block;
   position: absolute;
   top: calc(50% - 17.5px);
   left: calc(50% - 17.5px);
@@ -277,14 +278,20 @@ body {
           animation: boom 1s 2.3s ease forwards;
 }
 
+.game__cell.bomb._active svg ellipse {
+  -webkit-animation: blinking 0.5s forwards linear infinite alternate, redding 2s 2s forwards ease;
+          animation: blinking 0.5s forwards linear infinite alternate, redding 2s 2s forwards ease;
+}
+
+.game__cell.bomb .boom-svg {
+  display: none;
+  -webkit-animation: none;
+          animation: none;
+}
+
 .game__cell.bomb svg {
   width: 35px;
   height: 35px;
-}
-
-.game__cell.bomb svg ellipse {
-  -webkit-animation: blinking 0.5s forwards linear infinite alternate, redding 2s 2s forwards ease;
-          animation: blinking 0.5s forwards linear infinite alternate, redding 2s 2s forwards ease;
 }
 
 .game__cell.flag svg {
