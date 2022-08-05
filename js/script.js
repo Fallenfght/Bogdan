@@ -155,11 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			} else if (target.bomb) {
 				//end game =================================================================================================
-				for (let index = 0; index < bombsCells.length; index++) {
-					const element = bombsCells[index];
-					element.insertAdjacentHTML('afterbegin', svgBomb);
-					element.classList.add('bomb');
-				}
 				target.classList.add("_active");
 				lose();
 				finish(this);
@@ -234,14 +229,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	function win() {
 		if (!gameContainer.classList.contains('_finish')) {
+			for (let index = 0; index < bombsCells.length; index++) {
+				const element = bombsCells[index];
+				if (!element.flag) {
+					element.insertAdjacentHTML('afterbegin', flag);
+					element.classList.add('flag');
+				}
+				element.insertAdjacentHTML('afterbegin', svgBomb);
+				element.classList.add('bomb');
+			}
+			bombsRemainNum.textContent = '0';
 			let winWindow = document.createElement('div');
-			winWindow.innerHTML = '<p>Победа</p><div class="game__againt-block"><p class="color_white">Сначала?</p><div class="flex color_white"><p class="yes">Да</p><p class="no">Нет</p></div></div>';
+			winWindow.innerHTML = '<p>Победа</p><div class="game__againt-block"><p class="color_white">Повторим?</p><div class="flex color_white"><p class="yes">Да</p><p class="no">Нет</p></div></div>';
 			winWindow.classList.add('game__end-block', '_win');
 			gameContainer.append(winWindow);
 			setYesNo(winWindow);
 		};
 	};
 	function lose() {
+		for (let index = 0; index < bombsCells.length; index++) {
+			const element = bombsCells[index];
+			element.insertAdjacentHTML('afterbegin', svgBomb);
+			element.classList.add('bomb');
+		}
 		let loseWindow = document.createElement('div');
 		loseWindow.innerHTML = '<p>Поражение</p><div class="game__againt-block"><p class="color_white">Сначала?</p><div class="flex color_white"><p class="yes">Да</p><p class="no">Нет</p></div></div>';
 		loseWindow.classList.add('game__end-block', '_lose');
