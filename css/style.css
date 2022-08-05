@@ -123,6 +123,10 @@ body {
   padding: 0 15px;
 }
 
+.color_white {
+  color: #ffffff;
+}
+
 .button {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -227,7 +231,7 @@ body {
           user-select: none;
 }
 
-.game__container._finish {
+.game__container._finish .game__box {
   cursor: default;
   pointer-events: none;
 }
@@ -319,20 +323,70 @@ body {
 }
 
 .game__bombs-remain {
-  padding: 5px 15px;
+  padding: 10px 15px;
   background: inherit;
   z-index: 2;
   position: sticky;
   top: 0px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   font-size: 16px;
+  line-height: 24px;
   -webkit-box-shadow: 0 0 4px 2px #fff;
           box-shadow: 0 0 4px 2px #fff;
 }
 
+.game__end-block {
+  position: sticky;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  background: inherit;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  z-index: 2;
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.game__end-block._win {
+  color: greenyellow;
+  -webkit-box-shadow: 0 0 4px 2px greenyellow;
+          box-shadow: 0 0 4px 2px greenyellow;
+}
+
 .game__end-block._lose {
   color: red;
+  -webkit-box-shadow: 0 0 4px 2px red;
+          box-shadow: 0 0 4px 2px red;
+}
+
+.game__end-block .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game__end-block .flex > * {
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 40px;
+  margin: 0px 15px 0px 0px;
+}
+
+.game__end-block .flex > *:last-child {
+  margin: 0px 0px 0px 0px;
 }
 
 .difficulties {
@@ -551,6 +605,26 @@ body {
     border: rgba(255, 255, 255, 0.9) 3px solid;
     -webkit-animation: hoverAfter 0.2s ease;
             animation: hoverAfter 0.2s ease;
+  }
+
+  .game__end-block .flex .yes {
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+  }
+
+  .game__end-block .flex .yes:hover {
+    color: greenyellow;
+  }
+
+  .game__end-block .flex .no {
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+  }
+
+  .game__end-block .flex .no:hover {
+    color: red;
   }
 }
 @supports (-webkit-appearance:none){
