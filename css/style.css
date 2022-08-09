@@ -157,13 +157,52 @@ body {
 .button_difficult {
   font-size: 20px;
   line-height: 30px;
-  background: #7045AC;
+  background: #3C1670;
 }
 
 .button_difficult._active {
   -webkit-box-shadow: 0 0 6px 6px #fff inset;
           box-shadow: 0 0 6px 6px #fff inset;
   pointer-events: none;
+}
+
+.difficulties__container {
+  text-align: center;
+}
+
+.difficulties__item {
+  border-radius: 8px;
+  background: #3C1670;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.difficulties__item-img {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #9D76D5;
+}
+
+.difficulties__item-img svg {
+  width: 100%;
+  height: 100%;
+}
+
+.difficulties__item-text {
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0px 0px 5px 0px;
+}
+
+.difficulties__item-text:last-child {
+  margin: 0px 0px 0px 0px;
+}
+
+.difficulties__item-name {
+  color: #E12A3D;
 }
 
 .main {
