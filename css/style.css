@@ -95,6 +95,10 @@ h6 {
   font-weight: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Stalinist One", cursive;
   font-weight: 400;
@@ -154,34 +158,44 @@ body {
   min-height: 30px;
 }
 
-.button_difficult {
-  font-size: 20px;
-  line-height: 30px;
-  background: #3C1670;
-}
-
-.button_difficult._active {
-  -webkit-box-shadow: 0 0 6px 6px #fff inset;
-          box-shadow: 0 0 6px 6px #fff inset;
-  pointer-events: none;
+.difficulties {
+  padding: 15px;
+  border: 2px solid #FDED72;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 0 30px;
+  background: #7D0000;
 }
 
 .difficulties__container {
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -30px -15px;
 }
 
 .difficulties__item {
+  text-align: center;
+  margin: 0 30px 15px;
   border-radius: 8px;
   background: #3C1670;
   padding: 15px;
   cursor: pointer;
 }
 
+.difficulties__item._active {
+  -webkit-box-shadow: 0 0 6px 6px #fff inset;
+          box-shadow: 0 0 6px 6px #fff inset;
+  pointer-events: none;
+}
+
 .difficulties__item-img {
   width: 80px;
   height: 80px;
   margin: 0 auto 20px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 50%;
   background: #9D76D5;
 }
@@ -203,6 +217,58 @@ body {
 
 .difficulties__item-name {
   color: #E12A3D;
+}
+
+.difficulties__noob {
+  background: #FFA858;
+}
+
+.difficulties__noob .difficulties__item-img {
+  background: -o-linear-gradient(316.83deg, rgba(0, 133, 255, 0.6) 8.32%, rgba(21, 6, 199, 0.6) 93.95%);
+  background: linear-gradient(133.17deg, rgba(0, 133, 255, 0.6) 8.32%, rgba(21, 6, 199, 0.6) 93.95%);
+}
+
+.difficulties__easy {
+  background: #85FD72;
+}
+
+.difficulties__easy .difficulties__item-img {
+  background: -o-linear-gradient(101.51deg, rgba(255, 184, 0, 0.6) 20.56%, rgba(203, 2, 236, 0.6) 62.28%);
+  background: linear-gradient(348.49deg, rgba(255, 184, 0, 0.6) 20.56%, rgba(203, 2, 236, 0.6) 62.28%);
+}
+
+.difficulties__addvanced {
+  background: #57FFF5;
+}
+
+.difficulties__addvanced .difficulties__item-img {
+  background: -o-radial-gradient(26.79% 97.77%, 99.15% 211.52%, rgba(255, 0, 0, 0.5) 39.62%, rgba(119, 236, 2, 0.5) 66.88%);
+  background: radial-gradient(99.15% 211.52% at 26.79% 97.77%, rgba(255, 0, 0, 0.5) 39.62%, rgba(119, 236, 2, 0.5) 66.88%);
+}
+
+.difficulties__genius {
+  background: -o-linear-gradient(342.3deg, rgba(255, 255, 255, 0.87) 3.07%, rgba(169, 61, 255, 0.87) 52.03%, rgba(255, 255, 255, 0.87) 105.59%);
+  background: linear-gradient(107.7deg, rgba(255, 255, 255, 0.87) 3.07%, rgba(169, 61, 255, 0.87) 52.03%, rgba(255, 255, 255, 0.87) 105.59%);
+}
+
+.difficulties__genius .difficulties__item-img {
+  background: -o-linear-gradient(104.57deg, rgba(255, 255, 255, 0.6) 13.19%, rgba(0, 209, 255, 0.6) 49.72%, rgba(255, 255, 255, 0.6) 88.85%);
+  background: linear-gradient(345.43deg, rgba(255, 255, 255, 0.6) 13.19%, rgba(0, 209, 255, 0.6) 49.72%, rgba(255, 255, 255, 0.6) 88.85%);
+}
+
+.difficulties__alien {
+  background: -o-linear-gradient(190.8deg, rgba(159, 31, 31, 0.2349) 32.03%, rgba(255, 36, 36, 0.87) 52.64%, rgba(54, 17, 17, 0.87) 73.47%);
+  background: linear-gradient(259.2deg, rgba(159, 31, 31, 0.2349) 32.03%, rgba(255, 36, 36, 0.87) 52.64%, rgba(54, 17, 17, 0.87) 73.47%);
+}
+
+.difficulties__alien .difficulties__item-img {
+  background: -o-linear-gradient(315.45deg, rgba(5, 255, 0, 0.6) 19.14%, rgba(232, 16, 16, 0.6) 38.04%, rgba(111, 16, 232, 0.6) 56.94%, rgba(24, 4, 251, 0.6) 75.84%);
+  background: linear-gradient(134.55deg, rgba(5, 255, 0, 0.6) 19.14%, rgba(232, 16, 16, 0.6) 38.04%, rgba(111, 16, 232, 0.6) 56.94%, rgba(24, 4, 251, 0.6) 75.84%);
+}
+
+.difficulties__custom {
+  background: #FDED72;
+  color: #141313;
 }
 
 .main {
@@ -440,27 +506,6 @@ body {
   margin: 0px 0px 0px 0px;
 }
 
-.difficulties {
-  padding: 15px;
-  border: 1px solid #FDED72;
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 0 0 30px;
-}
-
-.difficulties__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0 -30px -15px;
-}
-
-.difficulties__item {
-  margin: 0 30px 15px;
-}
-
 @-webkit-keyframes blinking {
   0% {
     fill: #141414;
@@ -618,18 +663,6 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .button_difficult {
-    -webkit-transition: background 0.3s ease, -webkit-box-shadow 0.3s ease;
-    transition: background 0.3s ease, -webkit-box-shadow 0.3s ease;
-    -o-transition: background 0.3s ease, box-shadow 0.3s ease;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    transition: background 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
-  }
-
-  .button_difficult:hover {
-    background: #3C1670;
-  }
-
   .button-start {
     -webkit-transition: background 0.3s ease;
     -o-transition: background 0.3s ease;
