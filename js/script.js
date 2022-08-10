@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 	const colors = {
-		1: 'rgb(13 173 59)',
-		2: 'rgb(47 124 255)',
-		3: 'rgb(249 44 255)',
-		4: '#A93DFF',
+		1: '#518600',
+		2: '#134BB5',
+		3: '#8B6E1D',
+		4: '#8934CD',
 		5: '#FF2424',
-		6: '#FEC3D8',
+		6: '#687A52',
 		7: 'black',
 		8: 'brown',
 	}
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		bombsForClick = bombs;
 		const cellsVal = inputs.cells.value;
 		finish(gameContainer);
-		gameContainer.innerHTML = '<div class="game__box"></div>';
+		gameContainer.innerHTML = '<div class="game__box-container"><div class="game__box"></div></div>';
 		gameContainer.className = 'game__container';
 		let gameBox = gameContainer.querySelector('.game__box');
 		gameContainer.insertAdjacentHTML('afterbegin', bombRemainBlock);
