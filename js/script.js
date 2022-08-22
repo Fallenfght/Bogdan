@@ -332,8 +332,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			const element = difficulties[key];
 			if (difficulties[key] == difficulties['custom']) {
 				element.container.addEventListener('click', function() {
-					inputs.rows.previousElementSibling.click();
-					inputs.rows.selectionStart = inputs.rows.value.length;
+					inputs.rows.focus();
+					inputs.rows.select();
 					for (const key in difficulties) {
 						const element = difficulties[key];
 						element.container.classList.remove('_active');
@@ -382,4 +382,30 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		};
 	};
+	/*modals*/
+	const allModals = document.querySelectorAll('.modal');
+	const bgClose = document.querySelector('.modal-bg-close');
+	const modalRules = document.querySelector('.modal-rules');
+	const buttonRules = document.querySelector('.modal-button-rules');
+	const modalConfig = document.querySelector('.modal-config');
+	const buttonConfig = document.querySelector('.modal-button-config');
+	setModal(modalRules, buttonRules);
+	setModal(modalConfig, buttonConfig);
+	bgClose.addEventListener('click', function() {
+		for (let index = 0; index < allModals.length; index++) {
+			const element = allModals[index];
+			element.classList.remove('_active');
+		}
+		this.classList.remove('_active');
+	})
+	function setModal(modal, button) {
+		button.addEventListener('click', function () {
+			modal.classList.add('_active');
+			bgClose.classList.add('_active');
+			modal.querySelector('.modal__close').addEventListener('click', function() {
+				modal.classList.remove('_active');
+				bgClose.classList.remove('_active');
+			})
+		})
+	}
 });
