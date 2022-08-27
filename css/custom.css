@@ -1,5 +1,5 @@
 @-moz-document url-prefix() {
   .game__bombs-remain {
-    transform: translate;
+    transform: translate(0);
   }
 }
