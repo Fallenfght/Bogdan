@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		4: '#8934CD',
 		5: '#FF2424',
 		6: '#687A52',
-		7: 'black',
-		8: 'brown',
+		7: '#333',
+		8: '#a52a2a',
 		prompt: {
 			empty: '#A6BE40',
 			withElem: '#A6BE40',
@@ -260,6 +260,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			promptButton.removeEventListener('click', promptClick);
 		}
 	}
+	function promptFinish() {
+			promptAttemps = 0;
+			promptText.textContent = promptAttemps;
+			promptContainer.classList.add('_disabled');
+			promptButton.removeEventListener('click', promptClick);
+	}
 	function rightClick(e) {
 		e.preventDefault();
 		const target = e.target;
@@ -337,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					element.classList.add('bomb');
 				}
 			}
+			promptFinish();
 			bombsRemainNum.textContent = '0';
 			let winWindow = document.createElement('div');
 			winWindow.innerHTML = '<p>Победа</p><div class="game__againt-block"><p class="color_white">Повторим?</p><div class="flex color_white"><p class="yes">Да</p><p class="no">Нет</p></div></div>';
@@ -353,6 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				element.classList.add('bomb');
 			}
 		}
+		promptFinish();
 		let loseWindow = document.createElement('div');
 		loseWindow.innerHTML = '<p>Поражение</p><div class="game__againt-block"><p class="color_white">Сначала?</p><div class="flex color_white"><p class="yes">Да</p><p class="no">Нет</p></div></div>';
 		loseWindow.classList.add('game__end-block', '_lose');

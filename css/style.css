@@ -283,9 +283,9 @@ input::selection {
   cursor: default;
 }
 
-.difficulties__custom {
+.difficulties .difficulties__custom {
   text-transform: none;
-  margin: 0 0 0 auto;
+  margin: 0 25px 20px 0;
   width: 100%;
   background: #45bdf0;
   -webkit-transition: -webkit-box-shadow 0.2s ease;
@@ -295,12 +295,12 @@ input::selection {
   transition: box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
 }
 
-.difficulties__custom .difficulties__item-name {
+.difficulties .difficulties__custom .difficulties__item-name {
   font-size: 32px;
   line-height: 41px;
 }
 
-.difficulties__custom-img {
+.difficulties .difficulties__custom-img {
   width: 40px;
   height: 40px;
   display: -webkit-box;
@@ -314,7 +314,7 @@ input::selection {
           justify-content: center;
 }
 
-.difficulties__custom-img svg {
+.difficulties .difficulties__custom-img svg {
   display: block;
   width: 30px;
   height: 30px;
@@ -458,7 +458,7 @@ input::selection {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: red;
+  color: #fa0d0d;
   width: 40px;
   height: 40px;
   font-weight: 600;
@@ -575,9 +575,9 @@ input::selection {
 }
 
 .game__end-block._win {
-  color: greenyellow;
-  -webkit-box-shadow: 0 0 4px 2px greenyellow;
-          box-shadow: 0 0 4px 2px greenyellow;
+  color: #adff2f;
+  -webkit-box-shadow: 0 0 4px 2px #adff2f;
+          box-shadow: 0 0 4px 2px #adff2f;
 }
 
 .game__end-block._lose {
@@ -626,12 +626,12 @@ input::selection {
 }
 
 .prompt.prompt__button_active .prompt__button {
-  background: greenyellow;
+  background: #adff2f;
 }
 
 .prompt.prompt__button_active .prompt__container {
-  -webkit-box-shadow: 0 0 4px 2px greenyellow;
-          box-shadow: 0 0 4px 2px greenyellow;
+  -webkit-box-shadow: 0 0 4px 2px #adff2f;
+          box-shadow: 0 0 4px 2px #adff2f;
 }
 
 .prompt._active {
@@ -874,7 +874,7 @@ input::selection {
   }
 
   100% {
-    fill: red;
+    fill: #fa0d0d;
   }
 }
 
@@ -884,7 +884,7 @@ input::selection {
   }
 
   100% {
-    fill: red;
+    fill: #fa0d0d;
   }
 }
 
@@ -977,8 +977,8 @@ input::selection {
   }
 
   100% {
-    fill: red;
-    stroke: red;
+    fill: #fa0d0d;
+    stroke: #fa0d0d;
   }
 }
 
@@ -989,8 +989,8 @@ input::selection {
   }
 
   100% {
-    fill: red;
-    stroke: red;
+    fill: #fa0d0d;
+    stroke: #fa0d0d;
   }
 }
 
@@ -1124,6 +1124,10 @@ input::selection {
     fill: #EFA52F;
   }
 
+  .difficulties {
+    background: 90% 200px/120px 110px no-repeat url("../img/svg/cowboy.svg"), #4B487E;
+  }
+
   .difficulties__container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1162,7 +1166,7 @@ input::selection {
     margin: 0 25px 40px;
   }
 
-  .difficulties__custom {
+  .difficulties .difficulties__custom {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
@@ -1193,7 +1197,7 @@ input::selection {
   }
 
   .game__end-block .flex .yes:hover {
-    color: greenyellow;
+    color: #adff2f;
   }
 
   .game__end-block .flex .no {
@@ -1218,7 +1222,7 @@ input::selection {
   }
 
   .prompt.prompt__button_active .prompt__button:hover {
-    background: greenyellow;
+    background: #adff2f;
   }
 
   .prompt._disabled .prompt__button:hover {
@@ -1248,6 +1252,13 @@ input::selection {
   }
 }
 
+@media (min-width: 1440px) {
+  .difficulties {
+    background-position: 90% 80px;
+    background-size: 180px 170px;
+  }
+}
+
 @media (min-width: 1600px) {
   .difficulties__item {
     -webkit-box-flex: 0;
@@ -1271,57 +1282,5 @@ input::selection {
 
   .prompt__container {
     font-size: 19px;
-    padding: 5px 15px;
   }
-}
-@supports (-webkit-appearance:none){
-
-}
-
- @media (min-width: 375px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 490px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 768px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 1024px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 1600px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (max-width: 767px){
-
-@supports (-webkit-appearance:none){
-
-}
-
 }
