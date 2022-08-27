@@ -321,7 +321,7 @@ input::selection {
 }
 
 .main {
-  padding: 40px 0;
+  padding: 40px 0 0;
 }
 
 .main__head {
@@ -337,7 +337,7 @@ input::selection {
 }
 
 .game__inputs {
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px 40px 0px;
 }
 
 .game__inputs-container {
@@ -1086,11 +1086,15 @@ input::selection {
   }
 
   .main {
-    padding: 80px 0;
+    padding: 80px 0 0;
   }
 
   .main__head {
     margin: 0px 0px 70px 0px;
+  }
+
+  .game__inputs {
+    margin: 0px 0px 80px 0px;
   }
 
   .game__input-error {
