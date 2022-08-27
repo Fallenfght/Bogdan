@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		bombsForClick = bombs;
 		const cellsVal = inputs.cells.value;
 		finish(gameContainer);
-		gameContainer.innerHTML = '<div class="game__box-container"><div class="game__box"></div></div>';
+		gameContainer.innerHTML = '<div class="game__box-container pyro"><div class="game__box"></div><div class="before"></div><div class="after"></div></div>';
 		gameContainer.className = 'game__container';
 		let gameBox = gameContainer.querySelector('.game__box');
 		gameContainer.insertAdjacentHTML('afterbegin', prompt);
