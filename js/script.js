@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		if (bombsValue > (allValue - 9)) {
 			element.value = allValue - 9;
-			error.textContent = 'Количество бомб не должно первышать количество клеток на 9';
+			error.textContent = 'Количество бомб не должно превышать количество клеток на 9';
 			element.classList.add('_error');
 		} else {
 			error.textContent = '';
