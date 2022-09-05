@@ -1225,7 +1225,7 @@ input::selection {
     width: fit-content;
   }
 
-  .game__cell:after {
+  .game__cell:hover:after {
     content: "";
     position: absolute;
     top: 50%;
@@ -1236,9 +1236,6 @@ input::selection {
     width: 40px;
     height: 40px;
     border-radius: inherit;
-  }
-
-  .game__cell:hover:after {
     -webkit-box-shadow: 0 0 2px 2px rgba(253, 203, 231, 0.8156862745);
             box-shadow: 0 0 2px 2px rgba(253, 203, 231, 0.8156862745);
     border: rgba(253, 203, 231, 0.8156862745) 3px solid;
