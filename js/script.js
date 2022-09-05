@@ -187,7 +187,30 @@ document.addEventListener('DOMContentLoaded', function() {
 				return;
 			}
 			if (target.open) {
-				return;
+				if (gameContainer.help) {
+					return;
+				}
+				const activeCells = collectActiveCells(target);
+				let activeflags = 0;
+				const thisSum = target.bombSum;
+				for (const key in activeCells) {
+					const element = activeCells[key];
+					if (element) {
+						if (element.flag) {
+							activeflags++;
+						}
+					}
+				}
+				if (activeflags == thisSum) {
+					for (const key in activeCells) {
+						const element = activeCells[key];
+						if (element) {
+							if (!element.flag) {
+								element.click();
+							}
+						}
+					}
+				}
 			} else if (target.bombSum) {
 				target.classList.add('_open');
 				target.open = 1;
@@ -195,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				target.style.color = colors[target.bombSum];
 				if (gameContainer.help) {
 					target.style.background = colors.prompt.withElem;
-					pomptAttempsChange();
+					promptAttempsChange();
 				}
 				//win ======================================================
 				pointsToWin--;
@@ -215,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					target.flag = 1;
 					bombsForClick--;
 					bombsRemainNum.textContent = bombsForClick;
-					pomptAttempsChange();
+					promptAttempsChange();
 				} else {
 					//end game =================================================================================================
 					target.classList.add("_active");
@@ -226,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				if (gameContainer.help) {
 					target.style.background = colors.prompt.empty;
 					target.classList.add("_open");
-					pomptAttempsChange();
+					promptAttempsChange();
 				}
 				let thisSiblings = collectActiveCells(target);
 				openEmpty(thisSiblings);
@@ -249,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			gameContainer.help = 1;
 		}
 	}
-	function pomptAttempsChange() {
+	function promptAttempsChange() {
 		gameContainer.help = 0;
 		gameContainer.classList.remove('_help');
 		promptContainer.classList.remove('prompt__button_active');
@@ -270,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		e.preventDefault();
 		const target = e.target;
 		if (target.classList.contains('game__cell')) {
-			if (!gameContainer.help) {
+
 				if (target.open) {
 					return;
 				}
@@ -287,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					bombsForClick++;
 					bombsRemainNum.textContent = bombsForClick;
 				}
-			}
+			
 		}
 		return false;
 	}
@@ -406,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (const key in positions) {
 			const element = positions[key];
 			if (element) {
-				if (element.classList.contains('_open')) {
+				if (element.open) {
 					positions[key] = null;
 				}
 			}

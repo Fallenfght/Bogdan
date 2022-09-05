@@ -1,5 +1,0 @@
-@-moz-document url-prefix() {
-  .game__bombs-remain, .game__end-block {
-    transform: translate(0);
-  }
-}
