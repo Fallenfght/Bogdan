@@ -730,6 +730,23 @@ input::selection {
   -webkit-transition: visibility 0.3s ease, opacity 0.3s ease;
   -o-transition: visibility 0.3s ease, opacity 0.3s ease;
   transition: visibility 0.3s ease, opacity 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: #45bdf0;
+}
+
+.modal::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: #4b487e;
+  border-radius: 8px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background-color: #45bdf0;
+  border-radius: 8px;
+  border: 3px solid #4b487e;
 }
 
 .modal._active {
