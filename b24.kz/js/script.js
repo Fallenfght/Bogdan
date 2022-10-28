@@ -63,30 +63,49 @@ document.addEventListener('DOMContentLoaded', function() {
 			aboutSlider.classList.add('_inactive');
 		}
 	}
-	const swiperTest = new Swiper('.test .swiper', {
-		loop: true,
-		spaceBetween: 0,
-		slidesPerView: 1,
-		centeredSlides: true,
-		effect: 'fade',
-		fadeEffect: {
-			crossFade: true
-		},
-		pagination: {
-			enabled: true,
-			el: '.test__pagination',
-		},
-		navigation: {
-			enabled: false,
-		},
-		breakpoints: {
-			1024: {
-				pagination: {
-					enabled: true,
-				},
+	const testBlock = document.querySelector('.test');
+	if (testBlock) {
+		const swiperTest = new Swiper('.test .swiper', {
+			loop: true,
+			spaceBetween: 0,
+			slidesPerView: 1,
+			centeredSlides: true,
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
 			},
+			effect: 'fade',
+			fadeEffect: {
+				crossFade: true
+			},
+			pagination: {
+				enabled: true,
+				clickable: true,
+				el: '.test__pagination',
+			},
+			navigation: {
+				enabled: false,
+			},
+			breakpoints: {
+				1024: {
+					pagination: {
+						enabled: true,
+					},
+				},
+			}
+		})
+		swiperTest.autoplay.stop();
+		let pos = testBlock.getBoundingClientRect().top;
+		window.addEventListener('scroll', checkPos);
+		function checkPos() {
+			pos = testBlock.getBoundingClientRect().top - window.innerHeight / 1.5;
+			if (pos <= 0) {
+				testBlock.classList.add('_active');
+				swiperTest.autoplay.start();
+				window.removeEventListener('scroll', checkPos);
+			}
 		}
-	})
+	}
 	const swiperPartners = new Swiper('.partners .swiper', {
 		loop: true,
 		spaceBetween: 0,
