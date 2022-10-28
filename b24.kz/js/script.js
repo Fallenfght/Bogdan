@@ -115,12 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		centeredSlides: false,
 		loopedSlidesLimit: false,
 		speed: 10000,
-		spaceBetween: 120,
+		spaceBetween: 50,
 		autoplay: {
 			delay: 0,
 			pauseOnMouseEnter: true,
 			disableOnInteraction: false,
-			//reverseDirection: true,
 		},
 		pagination: {
 			enabled: false,
@@ -128,6 +127,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		navigation: {
 			enabled: false,
 		},
+		breakpoints: {
+			768: {
+				spaceBetween: 120,
+			},
+		}
 	})
 	const swiperReviews = new Swiper('.reviews .swiper', {
 		loop: true,

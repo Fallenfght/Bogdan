@@ -915,7 +915,7 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 }
 
 .partners__head {
-  margin: 0px 0px 60px 0px;
+  margin: 0px 0px 30px 0px;
   text-align: center;
 }
 
@@ -942,7 +942,7 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 .partners__item img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 50px;
 }
 
 .reviews__head {
@@ -2131,6 +2131,14 @@ body .btn-top._visible {
     margin: 0px 0px 20px 0px;
     font-size: 18px;
     line-height: 30px;
+  }
+
+  .partners__head {
+    margin: 0px 0px 60px 0px;
+  }
+
+  .partners__item img {
+    height: 70px;
   }
 
   .reviews__head {
