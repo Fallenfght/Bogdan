@@ -383,6 +383,10 @@ h6 {
   color: #ffffff;
 }
 
+.about__container {
+  position: relative;
+}
+
 .about__slider {
   overflow: visible;
 }
@@ -466,6 +470,7 @@ h6 {
 
 .about__btn-container {
   text-align: center;
+  margin: -35px 0px 0px 0px;
 }
 
 .about__btn {
@@ -1030,6 +1035,10 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
   line-height: 24px;
 }
 
+.videos .videos__accordion .accordion__item:last-child {
+  margin: 0px 0px 0px 0px;
+}
+
 .videos .videos__accordion .accordion__item._active {
   pointer-events: none;
 }
@@ -1153,6 +1162,15 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 }
 
 .accordion__drop-point:last-child {
+  margin: 0px 0px 0px 0px;
+}
+
+.accordion__drop-point-text {
+  margin: 0px 25px 0px 0px;
+  font-weight: 400;
+}
+
+.accordion__drop-point-text:last-child {
   margin: 0px 0px 0px 0px;
 }
 
