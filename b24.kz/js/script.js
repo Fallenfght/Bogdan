@@ -112,12 +112,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		slidesPerView: 'auto',
 		height: 70,
 		freeMode: true,
-		centeredSlides: false,
+		centeredSlides: true,
 		loopedSlidesLimit: false,
 		speed: 10000,
 		spaceBetween: 50,
 		autoplay: {
-			delay: 0,
+			delay: 1,
 			pauseOnMouseEnter: true,
 			disableOnInteraction: false,
 		},
@@ -203,16 +203,18 @@ document.addEventListener('DOMContentLoaded', function() {
 			const element = accordions[index];
 			const items = element.querySelectorAll('.accordion__item');
 			for (let index = 0; index < items.length; index++) {
-				const element = items[index];
-				element.addEventListener('click', function() {
-					if (this.classList.contains('_active')) {
-						return;
-					} else {
-						for (let index = 0; index < items.length; index++) {
-							const element = items[index];
-							element.classList.remove('_active');
+				const elementItem = items[index];
+				elementItem.addEventListener('click', function() {
+					if (!this.classList.contains('_active')) {
+						if (element.classList.contains('_close-all')) {
+							for (let index = 0; index < items.length; index++) {
+								const elementItem = items[index];
+								elementItem.classList.remove('_active');
+							}
 						}
 						this.classList.add('_active');
+					} else if (!element.classList.contains('videos__accordion')) {
+						this.classList.remove('_active');
 					}
 				})
 			}
@@ -243,5 +245,112 @@ document.addEventListener('DOMContentLoaded', function() {
 				buttonTop.classList.remove('_visible');
 			}
 		})
+	}
+})
+document.addEventListener('DOMContentLoaded', function() {
+	const itemsContainer = document.querySelectorAll('.licenses__items');
+	if (itemsContainer.length) {
+		for (let index = 0; index < itemsContainer.length; index++) {
+			const element = itemsContainer[index];
+			if (window.innerWidth >= 1024) {
+				const itemsHoverElem = element.querySelector('.licenses__characters-hover');
+				const item = element.querySelectorAll('.licenses__characters-item');
+				for (let index = 0; index < item.length; index++) {
+					const element = item[index];
+					element.addEventListener('mouseenter', function() {
+						const top = element.offsetTop;
+						const height = element.clientHeight;
+						itemsHoverElem.style.height = height + 20 + 'px';
+						itemsHoverElem.style.top = top - 10 + 'px';
+						itemsHoverElem.style.opacity = '1';
+					})
+				}
+			}
+			const items = element.querySelectorAll('.licenses__item');
+			for (let index = 0; index < items.length; index++) {
+				const element = items[index];
+				const button = element.querySelector('.licenses__more');
+				const characters = element.querySelector('.licenses__characters');
+				button.addEventListener('click', function() {
+					if (this.classList.contains('_active')) {
+						this.classList.remove('_active');
+						this.querySelector('.button-with-arrow__text').textContent = 'Подробнее';
+						characters.classList.remove('_active');
+						window.scrollTo({
+							top: element.offsetTop - 100,
+						});
+					} else {
+						window.scrollTo({
+							top: this.offsetTop - 200,
+						});
+						this.classList.add('_active');
+						this.querySelector('.button-with-arrow__text').textContent = 'Скрыть';
+						characters.classList.add('_active');
+					}
+				})
+			}
+		}
+	}
+	const usersButtons = document.querySelectorAll('.licenses__users-button');
+	if (usersButtons.length) {
+		for (let index = 0; index < usersButtons.length; index++) {
+			const element = usersButtons[index];
+			element.addEventListener('click', function() {
+				for (let index = 0; index < usersButtons.length; index++) {
+					const element = usersButtons[index];
+					element.classList.remove('_active');
+				}
+				this.classList.add('_active');
+			})
+		}
+	}
+})
+document.addEventListener('DOMContentLoaded', function() {
+	const selects = document.querySelectorAll('.select');
+	if (selects.length) {
+		for (let index = 0; index < selects.length; index++) {
+			const element = selects[index];
+			const mainItem = element.querySelector('.select__main-item');
+			element.addEventListener('click', function(e) {
+				e.stopPropagation();
+				this.classList.toggle('_active');
+				if (e.target.classList.contains('select__drop-item')) {
+					mainItem.innerHTML= e.target.innerHTML;
+				}
+			})
+		}
+		document.body.addEventListener('click', function() {
+			for (let index = 0; index < selects.length; index++) {
+				const element = selects[index];
+				element.classList.remove('_active');
+			}
+		})
+	}
+})
+document.addEventListener('DOMContentLoaded', function() {
+	const tabsButtons = document.querySelectorAll('.tab__btn');
+	const tabItems = document.querySelectorAll('.tab__item');
+	if (tabsButtons.length && tabItems.length) {
+		for (let index = 0; index < tabsButtons.length; index++) {
+			const element = tabsButtons[index];
+			element.addEventListener('click', function() {
+				const buttonVal = this.dataset.tab;
+				if (!this.classList.contains('_active')) {
+					for (let index = 0; index < tabsButtons.length; index++) {
+						const element = tabsButtons[index];
+						element.classList.remove('_active');
+					}
+					this.classList.add('_active');
+					for (let index = 0; index < tabItems.length; index++) {
+						const element = tabItems[index];
+						if (element.dataset.tab == buttonVal) {
+							element.classList.add('_active');
+						} else {
+							element.classList.remove('_active');
+						}
+					}
+				}
+			})
+		}
 	}
 })
