@@ -42,11 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
 				pagination: {
 					enabled: true,
 					el: '.swiper-pagination',
+					clickable: true,
 				},
 				navigation: {
 					enabled: false,
 					nextEl: '.arrow-right',
 					prevEl: '.arrow-left',
+				},
+				autoplay: {
+					delay: 7000,
+					disableOnInteraction: false,
 				},
 				breakpoints: {
 					1024: {
@@ -71,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			slidesPerView: 1,
 			centeredSlides: true,
 			autoplay: {
-				delay: 4000,
+				delay: 8000,
 				disableOnInteraction: false,
 			},
 			effect: 'fade',
@@ -280,9 +285,9 @@ document.addEventListener('DOMContentLoaded', function() {
 							top: element.offsetTop - 100,
 						});
 					} else {
-						window.scrollTo({
-							top: this.offsetTop - 200,
-						});
+						//window.scrollTo({
+						//	top: this.offsetTop - 200,
+						//});
 						this.classList.add('_active');
 						this.querySelector('.button-with-arrow__text').textContent = 'Скрыть';
 						characters.classList.add('_active');
@@ -353,4 +358,26 @@ document.addEventListener('DOMContentLoaded', function() {
 			})
 		}
 	}
+})
+document.addEventListener('DOMContentLoaded', function() {
+	const links = document.querySelectorAll('.btn-scroll');
+if (links.length) {
+	for (let index = 0; index < links.length; index++) {
+		const element = links[index];
+		const elementHash = element.hash;
+		if (elementHash) {
+			const point = document.querySelector(elementHash);
+			if (point) {
+				element.addEventListener('click', function(e) {
+					e.preventDefault();
+					const pointPos = point.offsetTop;
+					window.scrollTo({
+						top: pointPos - 100,
+						behavior: 'smooth',
+					});
+				})
+			}
+		}
+	}
+}
 })
