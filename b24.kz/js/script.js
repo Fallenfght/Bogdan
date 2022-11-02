@@ -209,17 +209,18 @@ document.addEventListener('DOMContentLoaded', function() {
 			const items = element.querySelectorAll('.accordion__item');
 			for (let index = 0; index < items.length; index++) {
 				const elementItem = items[index];
-				elementItem.addEventListener('click', function() {
-					if (!this.classList.contains('_active')) {
+				const elementMain = elementItem.querySelector('.accordion__main-head');
+				elementMain.addEventListener('click', function() {
+					if (!elementItem.classList.contains('_active')) {
 						if (element.classList.contains('_close-all')) {
 							for (let index = 0; index < items.length; index++) {
 								const elementItem = items[index];
 								elementItem.classList.remove('_active');
 							}
 						}
-						this.classList.add('_active');
+						elementItem.classList.add('_active');
 					} else if (!element.classList.contains('videos__accordion')) {
-						this.classList.remove('_active');
+						elementItem.classList.remove('_active');
 					}
 				})
 			}

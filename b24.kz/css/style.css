@@ -1082,7 +1082,6 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 
 .videos .videos__accordion .accordion__item {
   margin: 0px 0px 20px 0px;
-  cursor: pointer;
   font-size: 16px;
   line-height: 24px;
 }
@@ -1095,7 +1094,7 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
   pointer-events: none;
 }
 
-.videos .videos__accordion .accordion__item._active .accordion__main-head {
+.videos .videos__accordion .accordion__item._active .accordion__main-head .accordion__main-head-underline {
   border-color: transparent;
 }
 
@@ -1108,7 +1107,10 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
   border-radius: 0;
   background: transparent;
   padding: 0;
-  display: inline;
+  display: block;
+}
+
+.videos .videos__accordion .accordion__main-head .accordion__main-head-underline {
   border-bottom: 2px dotted #0053AA;
 }
 
@@ -1118,6 +1120,19 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 
 .accordion__list {
   list-style-position: inside;
+  list-style-type: none;
+  counter-reset: num;
+}
+
+.accordion__list .accordion__item .accordion__main-head {
+  position: relative;
+}
+
+.accordion__list .accordion__item .accordion__main-head::before {
+  content: counter(num) ".";
+  counter-increment: num;
+  display: inline-block;
+  padding: 0px 5px 0px 0px;
 }
 
 .accordion__item {
@@ -3518,17 +3533,17 @@ body .btn-top._visible {
     height: 320px;
   }
 
-  .videos .videos__accordion .accordion__item .accordion__main-head {
+  .videos .accordion__main-head .accordion__main-head-underline {
     -webkit-transition: border-color 0.3s ease;
     -o-transition: border-color 0.3s ease;
     transition: border-color 0.3s ease;
   }
 
-  .videos .videos__accordion .accordion__item:hover {
+  .videos .accordion__item:hover {
     color: #000;
   }
 
-  .videos .videos__accordion .accordion__item:hover .accordion__main-head {
+  .videos .accordion__item:hover .accordion__main-head .accordion__main-head-underline {
     border-color: #000;
   }
 
