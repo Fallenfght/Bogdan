@@ -1471,6 +1471,7 @@ body .btn-top._visible {
 
 .licenses__preview {
   margin: 0px 0px 20px 0px;
+  min-height: 150px;
 }
 
 .licenses__preview-img {
@@ -1497,6 +1498,10 @@ body .btn-top._visible {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 80px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -1515,13 +1520,12 @@ body .btn-top._visible {
 .licenses__price-select-pdf {
   font-size: 16px;
   line-height: 26px;
-  margin: 0 0 12px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1887,7 +1891,7 @@ body .btn-top._visible {
   font-size: 16px;
   line-height: 20px;
   color: #000;
-  min-width: 155px;
+  width: 155px;
 }
 
 .select._active .select__arrow {
@@ -2636,6 +2640,13 @@ body .btn-top._visible {
     margin: 0px 10px 0px 0px;
   }
 
+  .licenses__price-select-pdf {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    margin: 0 0 12px auto;
+  }
+
   .licenses__users-button {
     padding: 3px 13px;
     margin: 0px 15px 0px 0px;
@@ -3026,12 +3037,8 @@ body .btn-top._visible {
     line-height: 26px;
   }
 
-  .licenses__price-select-pdf {
-    margin: 0 0 12px auto;
-  }
-
   .select {
-    min-width: 212px;
+    width: 172px;
   }
 
   .select .select__procent {
