@@ -381,4 +381,26 @@ if (links.length) {
 		}
 	}
 }
+	const questions = document.querySelectorAll('.question');
+if (questions.length) {
+	for (let index = 0; index < questions.length; index++) {
+		const element = questions[index];
+		element.addEventListener('click', function(e) {
+			e.stopPropagation();
+			if (element.classList.contains('_active')) {
+				element.classList.remove('_active');
+			} else {
+				for (let index = 0; index < questions.length; index++) {
+					questions[index].classList.remove('_active');
+				}
+				element.classList.add('_active');
+			}
+		})
+	}
+	document.addEventListener('click', function() {
+		for (let index = 0; index < questions.length; index++) {
+			questions[index].classList.remove('_active');
+		}
+	})
+}
 })
