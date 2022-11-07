@@ -3024,6 +3024,10 @@ body .btn-top._visible {
   line-height: 15px;
 }
 
+._lock {
+  overflow: hidden;
+}
+
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(0.9);
