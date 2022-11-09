@@ -1,4 +1,11 @@
+#bx-panel {
+  z-index: 1001 !important;
+}
 
+#bx-panel ~ .header:not(._active) {
+  position: sticky;
+  background: #263E88;
+}
 @supports (-webkit-appearance:none){
 
 }

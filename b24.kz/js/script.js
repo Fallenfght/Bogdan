@@ -68,46 +68,49 @@ document.addEventListener('DOMContentLoaded', function() {
 			aboutSlider.classList.add('_inactive');
 		}
 	}
-	const testBlock = document.querySelector('.test');
-	if (testBlock) {
-		const swiperTest = new Swiper('.test .swiper', {
-			loop: true,
-			spaceBetween: 0,
-			slidesPerView: 1,
-			centeredSlides: true,
-			autoplay: {
-				delay: 8000,
-				disableOnInteraction: false,
-			},
-			effect: 'fade',
-			fadeEffect: {
-				crossFade: true
-			},
-			pagination: {
-				enabled: true,
-				clickable: true,
-				el: '.test__pagination',
-			},
-			navigation: {
-				enabled: false,
-			},
-			breakpoints: {
-				1024: {
-					pagination: {
-						enabled: true,
-					},
+	const testBlock = document.querySelectorAll('.test');
+	if (testBlock.length) {
+		for (let index = 0; index < testBlock.length; index++) {
+			const element = testBlock[index];
+			const swiperTest = new Swiper(element.querySelector('.swiper'), {
+				loop: true,
+				spaceBetween: 0,
+				slidesPerView: 1,
+				centeredSlides: true,
+				autoplay: {
+					delay: 8000,
+					disableOnInteraction: false,
 				},
-			}
-		})
-		swiperTest.autoplay.stop();
-		let pos = testBlock.getBoundingClientRect().top;
-		window.addEventListener('scroll', checkPos);
-		function checkPos() {
-			pos = testBlock.getBoundingClientRect().top - window.innerHeight / 1.5;
-			if (pos <= 0) {
-				testBlock.classList.add('_active');
-				swiperTest.autoplay.start();
-				window.removeEventListener('scroll', checkPos);
+				effect: 'fade',
+				fadeEffect: {
+					crossFade: true
+				},
+				pagination: {
+					enabled: true,
+					clickable: true,
+					el: '.test__pagination',
+				},
+				navigation: {
+					enabled: false,
+				},
+				breakpoints: {
+					1024: {
+						pagination: {
+							enabled: true,
+						},
+					},
+				}
+			})
+			swiperTest.autoplay.stop();
+			let pos;
+			window.addEventListener('scroll', checkPos);
+			function checkPos() {
+				pos = element.getBoundingClientRect().top - window.innerHeight / 1.5;
+				if (pos <= 0) {
+					element.classList.add('_active');
+					swiperTest.autoplay.start();
+					window.removeEventListener('scroll', checkPos);
+				}
 			}
 		}
 	}
@@ -402,6 +405,85 @@ if (questions.length) {
 			questions[index].classList.remove('_active');
 		}
 	})
+}
+	let sliderButton = document.querySelectorAll('.slider-grab__item-two-slides');
+if (sliderButton.length > 0) {
+	for (let index = 0; index < sliderButton.length; index++) {
+		const element = sliderButton[index];
+		const button = element.querySelector('.item-bg-two-images__button');
+		let buttonWidth = button.offsetWidth;
+		let buttonHalfWidth = button.offsetWidth / 2;
+		let containerleftPos = element.getBoundingClientRect().left;
+		let containerWidth = element.offsetWidth;
+		const body = document.body;
+		const image = element.querySelector('.item-bg-two-images__first');
+		image.querySelector('img').style.width = containerWidth + 'px';
+		let shiftX = {};
+		if (window.innerWidth < 1024) {
+			button.addEventListener('touchstart', function(event) {
+				shiftX = event.touches[0].clientX - button.getBoundingClientRect().left;
+				button.classList.add('_active');
+				button.classList.add('_activated');
+				button.style.left = 0;
+				button.style.zIndex = 200;
+				body.style.cursor = 'grabbing';
+				moveAt(event.touches[0].pageX);
+				function onMouseMove(event) {
+					event.preventDefault();
+					moveAt(event.touches[0].pageX);
+				};
+				document.addEventListener('touchmove', onMouseMove, {passive:false});
+				document.addEventListener('touchend', function() {
+					document.body.style.position = '';
+					document.removeEventListener('touchmove', onMouseMove);
+					button.onmouseup = null;
+					body.style.cursor = '';
+					button.classList.remove('_active');
+				});
+			});
+		} else {
+			button.addEventListener('pointerdown', function(event) {
+				shiftX = event.clientX - button.getBoundingClientRect().left;
+				button.classList.add('_active');
+				button.classList.add('_activated');
+				button.style.left = 0;
+				button.style.zIndex = 200;
+				body.style.cursor = 'grabbing';
+				moveAt(event.pageX);
+				function onMouseMove(event) {
+					event.preventDefault();
+					moveAt(event.pageX);
+				};
+				document.addEventListener('pointermove', onMouseMove, {passive:false});
+				document.addEventListener('pointerup', function() {
+					document.body.style.position = '';
+					document.removeEventListener('pointermove', onMouseMove);
+					button.onmouseup = null;
+					body.style.cursor = '';
+					button.classList.remove('_active');
+				});
+			});
+		}
+		button.addEventListener('dragstart', function() {
+			return false;
+		});
+		function moveAt(pageX) {
+			let position = pageX - shiftX - containerleftPos;
+			if (position <= 0) {
+				button.style.transform = 'translate(0, 0px)';
+				image.style.transition = 'width 0.3s ease';
+				image.style.width = '100%';
+			} else if (position + buttonWidth >= containerWidth) {
+				button.style.transform = 'translate(' + (containerWidth - buttonWidth) + 'px, 0)';
+				image.style.transition = 'width 0.3s ease';
+				image.style.width = 'calc(100% - ' + (containerWidth - 3) + 'px)';
+			} else {
+				button.style.transform = 'translate(' + position + 'px, 0';
+				image.style.transition = '';
+				image.style.width = 'calc(100% - ' + (pageX - shiftX + buttonHalfWidth - containerleftPos) + 'px)';
+			}
+		};
+	}
 }
 })
 const modal = document.querySelector('.modal');
