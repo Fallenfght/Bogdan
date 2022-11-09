@@ -264,15 +264,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (window.innerWidth >= 1024) {
 				const itemsHoverElem = element.querySelector('.licenses__characters-hover');
 				const item = element.querySelectorAll('.licenses__characters-item');
-				for (let index = 0; index < item.length; index++) {
-					const element = item[index];
-					element.addEventListener('mouseenter', function() {
-						const top = element.offsetTop;
-						const height = element.clientHeight;
-						itemsHoverElem.style.height = height + 20 + 'px';
-						itemsHoverElem.style.top = top - 10 + 'px';
-						itemsHoverElem.style.opacity = '1';
-					})
+				if (itemsHoverElem && item.length) {
+					for (let index = 0; index < item.length; index++) {
+						const element = item[index];
+						element.addEventListener('mouseenter', function() {
+							const top = element.offsetTop;
+							const height = element.clientHeight;
+							itemsHoverElem.style.height = height + 20 + 'px';
+							itemsHoverElem.style.top = top - 10 + 'px';
+							itemsHoverElem.style.opacity = '1';
+						})
+					}
 				}
 			}
 			const items = element.querySelectorAll('.licenses__item');
@@ -280,23 +282,22 @@ document.addEventListener('DOMContentLoaded', function() {
 				const element = items[index];
 				const button = element.querySelector('.licenses__more');
 				const characters = element.querySelector('.licenses__characters');
-				button.addEventListener('click', function() {
-					if (this.classList.contains('_active')) {
-						this.classList.remove('_active');
-						this.querySelector('.button-with-arrow__text').textContent = 'Подробнее';
-						characters.classList.remove('_active');
-						window.scrollTo({
-							top: element.offsetTop - 100,
-						});
-					} else {
-						//window.scrollTo({
-						//	top: this.offsetTop - 200,
-						//});
-						this.classList.add('_active');
-						this.querySelector('.button-with-arrow__text').textContent = 'Скрыть';
-						characters.classList.add('_active');
-					}
-				})
+				if (button && characters) {
+					button.addEventListener('click', function() {
+						if (this.classList.contains('_active')) {
+							this.classList.remove('_active');
+							this.querySelector('.button-with-arrow__text').textContent = 'Подробнее';
+							characters.classList.remove('_active');
+							window.scrollTo({
+								top: element.offsetTop - 100,
+							});
+						} else {
+							this.classList.add('_active');
+							this.querySelector('.button-with-arrow__text').textContent = 'Скрыть';
+							characters.classList.add('_active');
+						}
+					})
+				}
 			}
 		}
 	}
