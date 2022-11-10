@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const aboutSlider = document.querySelector('.about .swiper');
 	if (aboutSlider) {
 		const swiperAboutSlides = aboutSlider.querySelectorAll('.about__item');
-		if (swiperAboutSlides.length > 1) {
+		if (swiperAboutSlides.length) {
 			const swiper = new Swiper(aboutSlider, {
 				loop: true,
 				spaceBetween: 0,
@@ -66,6 +66,55 @@ document.addEventListener('DOMContentLoaded', function() {
 			})
 		} else {
 			aboutSlider.classList.add('_inactive');
+		}
+	}
+	const numberedSlider = document.querySelectorAll('.slider-numbered .swiper');
+	if (numberedSlider.length) {
+		for (let index = 0; index < numberedSlider.length; index++) {
+			const element = numberedSlider[index];
+			const swiper = new Swiper(element, {
+				rewind: true,
+				spaceBetween: 0,
+				slidesPerView: 1,
+				centeredSlides: true,
+				effect: 'fade',
+				grabCursor: true,
+				autoHeight: true,
+				fadeEffect: {
+					crossFade: true
+				},
+				pagination: {
+					enabled: true,
+					el: '.swiper-pagination',
+					clickable: true,
+					bulletClass: 'slider-numbered__dot',
+					bulletActiveClass: '_active',
+				},
+				autoplay: {
+					delay: 7000,
+					disableOnInteraction: false,
+				},
+				on: {
+					beforeInit: function() {
+						const slides = element.querySelectorAll('.swiper-slide');
+						for (let index = 0; index < slides.length; index++) {
+							const element = slides[index];
+							const head = element.querySelector('.slider-numbered__item-head');
+							const count = index + 1;
+							head.innerHTML = String(count) + '. ' + head.innerHTML;
+						}
+					},
+				},
+			});
+			const dotsContainer = element.querySelector('.slider-numbered__dots');
+			swiper.on('slideChange', function() {
+				const currentDotPos = element.querySelector('.slider-numbered__dot._active').offsetLeft;
+				dotsContainer.scrollTo({
+					top: 0,
+					left: currentDotPos - 26,
+					behavior: 'smooth',
+				})
+			});
 		}
 	}
 	const testBlock = document.querySelectorAll('.test');
