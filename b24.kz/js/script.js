@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
 					bulletClass: 'slider-numbered__dot',
 					bulletActiveClass: '_active',
 				},
-				//autoplay: {
-				//	delay: 7000,
-				//	disableOnInteraction: false,
-				//},
+				autoplay: {
+					delay: 8000,
+					disableOnInteraction: false,
+				},
 				on: {
 					beforeInit: function() {
 						const slides = element.querySelectorAll('.swiper-slide');
@@ -114,54 +114,67 @@ document.addEventListener('DOMContentLoaded', function() {
 					behavior: 'smooth',
 				})
 			});
-		}
-	}
-	const testBlock = document.querySelectorAll('.test');
-	if (testBlock.length) {
-		for (let index = 0; index < testBlock.length; index++) {
-			const element = testBlock[index];
-			let autoplaySpeed = 8000;
-			if (element.querySelector('.test_autoplay_long')) {
-				autoplaySpeed = 14000;
-			}
-			const swiperTest = new Swiper(element.querySelector('.swiper'), {
-				loop: true,
-				spaceBetween: 0,
-				slidesPerView: 1,
-				centeredSlides: true,
-				autoplay: {
-					delay: autoplaySpeed,
-					disableOnInteraction: false,
-				},
-				effect: 'fade',
-				fadeEffect: {
-					crossFade: true
-				},
-				pagination: {
-					enabled: true,
-					clickable: true,
-					el: '.test__pagination',
-				},
-				navigation: {
-					enabled: false,
-				},
-				breakpoints: {
-					1024: {
-						pagination: {
-							enabled: true,
-						},
-					},
-				}
-			})
-			swiperTest.autoplay.stop();
+			swiper.autoplay.stop();
 			let pos;
 			window.addEventListener('scroll', checkPos);
 			function checkPos() {
 				pos = element.getBoundingClientRect().top - window.innerHeight / 1.5;
 				if (pos <= 0) {
 					element.classList.add('_active');
-					swiperTest.autoplay.start();
+					swiper.autoplay.start();
 					window.removeEventListener('scroll', checkPos);
+				}
+			}
+		}
+	}
+	const testBlock = document.querySelectorAll('.test');
+	if (testBlock.length) {
+		for (let index = 0; index < testBlock.length; index++) {
+			const element = testBlock[index];
+			if (element.querySelector('.swiper')) {
+				let autoplaySpeed = 8000;
+				if (element.querySelector('.test_autoplay_long')) {
+					autoplaySpeed = 14000;
+				}
+				const swiperTest = new Swiper(element.querySelector('.swiper'), {
+					loop: true,
+					spaceBetween: 0,
+					slidesPerView: 1,
+					centeredSlides: true,
+					autoplay: {
+						delay: autoplaySpeed,
+						disableOnInteraction: false,
+					},
+					effect: 'fade',
+					fadeEffect: {
+						crossFade: true
+					},
+					pagination: {
+						enabled: true,
+						clickable: true,
+						el: '.test__pagination',
+					},
+					navigation: {
+						enabled: false,
+					},
+					breakpoints: {
+						1024: {
+							pagination: {
+								enabled: true,
+							},
+						},
+					}
+				})
+				swiperTest.autoplay.stop();
+				let pos;
+				window.addEventListener('scroll', checkPos);
+				function checkPos() {
+					pos = element.getBoundingClientRect().top - window.innerHeight / 1.5;
+					if (pos <= 0) {
+						element.classList.add('_active');
+						swiperTest.autoplay.start();
+						window.removeEventListener('scroll', checkPos);
+					}
 				}
 			}
 		}
