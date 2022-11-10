@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				centeredSlides: true,
 				effect: 'fade',
 				grabCursor: true,
-				autoHeight: true,
 				fadeEffect: {
 					crossFade: true
 				},
@@ -90,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
 					bulletClass: 'slider-numbered__dot',
 					bulletActiveClass: '_active',
 				},
-				autoplay: {
-					delay: 7000,
-					disableOnInteraction: false,
-				},
+				//autoplay: {
+				//	delay: 7000,
+				//	disableOnInteraction: false,
+				//},
 				on: {
 					beforeInit: function() {
 						const slides = element.querySelectorAll('.swiper-slide');
@@ -121,13 +120,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (testBlock.length) {
 		for (let index = 0; index < testBlock.length; index++) {
 			const element = testBlock[index];
+			let autoplaySpeed = 8000;
+			if (element.querySelector('.test_autoplay_long')) {
+				autoplaySpeed = 14000;
+			}
 			const swiperTest = new Swiper(element.querySelector('.swiper'), {
 				loop: true,
 				spaceBetween: 0,
 				slidesPerView: 1,
 				centeredSlides: true,
 				autoplay: {
-					delay: 8000,
+					delay: autoplaySpeed,
 					disableOnInteraction: false,
 				},
 				effect: 'fade',

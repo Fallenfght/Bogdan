@@ -664,6 +664,11 @@ h6 {
           animation: loading 8s linear forwards;
 }
 
+.test .test__slider.test_autoplay_long .swiper-pagination-bullet-active:after {
+  -webkit-animation-duration: 14s;
+          animation-duration: 14s;
+}
+
 .test__btn-container {
   position: relative;
   -ms-flex-item-align: start;
