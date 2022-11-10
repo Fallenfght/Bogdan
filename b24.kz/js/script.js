@@ -470,7 +470,9 @@ if (sliderButton.length > 0) {
 		let containerWidth = element.offsetWidth;
 		const body = document.body;
 		const image = element.querySelector('.item-bg-two-images__first');
+		const imageSecond = element.querySelector('.item-bg-two-images__second');
 		image.querySelector('img').style.width = containerWidth + 'px';
+		imageSecond.querySelector('img').style.width = containerWidth + 'px';
 		let shiftX = {};
 		if (window.innerWidth < 1024) {
 			button.addEventListener('touchstart', function(event) {
@@ -525,15 +527,21 @@ if (sliderButton.length > 0) {
 			if (position <= 0) {
 				button.style.transform = 'translate(0, 0px)';
 				image.style.transition = 'width 0.3s ease';
+				imageSecond.style.transition = 'width 0.3s ease';
 				image.style.width = '100%';
+				imageSecond.style.width = '0%';
 			} else if (position + buttonWidth >= containerWidth) {
 				button.style.transform = 'translate(' + (containerWidth - buttonWidth) + 'px, 0)';
 				image.style.transition = 'width 0.3s ease';
+				imageSecond.style.transition = 'width 0.3s ease';
 				image.style.width = 'calc(100% - ' + (containerWidth - 3) + 'px)';
+				imageSecond.style.width = 'calc(0% + ' + (containerWidth - 3) + 'px)';
 			} else {
 				button.style.transform = 'translate(' + position + 'px, 0';
 				image.style.transition = '';
-				image.style.width = 'calc(100% - ' + (pageX - shiftX + buttonHalfWidth - containerleftPos) + 'px)';
+				imageSecond.style.transition = '';
+				image.style.width = 'calc(100% - ' + (position + buttonHalfWidth) + 'px)';
+				imageSecond.style.width = 'calc(0% + ' + (position + buttonHalfWidth) + 'px)';
 			}
 		};
 	}
