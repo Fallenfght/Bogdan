@@ -1211,11 +1211,12 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 }
 
 .accordion__drop-container {
-  margin: 0px 0px 20px 0px;
+  border-bottom: 1px solid #ECECEC;
+  padding: 15px 0;
 }
 
 .accordion__drop-container:last-child {
-  margin: 0px 0px 0px 0px;
+  border: 0;
 }
 
 .accordion__main-head {
@@ -1273,18 +1274,18 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
 }
 
 .accordion__drop-text-container .accordion__drop-text {
-  margin: 0px 0px 0px 0px;
+  margin: 0px 0px 10px 0px;
 }
 
 .accordion__drop-text {
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
-  margin: 0px 20px 0px 0px;
+  margin: 0px 0px 20px 0px;
 }
 
 .accordion__drop-subtext {
-  margin: 10px 0px 0px 0px;
+  margin: 0px 0px 20px 0px;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
@@ -3998,6 +3999,14 @@ body .btn-top._visible {
   .videos .videos__accordion .accordion__item {
     font-size: 21px;
     line-height: 26px;
+  }
+
+  .accordion__drop-text {
+    margin: 0px 20px 0px 0px;
+  }
+
+  .accordion__drop-subtext:last-child {
+    margin: 0px 0px 0px 0px;
   }
 
   .accordion__drop-point {
