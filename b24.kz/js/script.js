@@ -560,30 +560,36 @@ if (sliderButton.length > 0) {
 	}
 }
 })
-const modal = document.querySelector('.modal');
+const modal = document.querySelectorAll('body>.modal');
 const buttonModal = document.querySelectorAll('.btn-modal-consult');
-if (modal && buttonModal.length) {
+if (modal.length && buttonModal.length) {
 	for (let index = 0; index < buttonModal.length; index++) {
 		const element = buttonModal[index];
 		element.addEventListener('click', function(e) {
 			e.preventDefault();
-			modal.classList.add('_active');
+			for (let index = 0; index < modal.length; index++) {
+				const element = modal[index];
+				element.classList.add('_active');
+			}
 			bodyFixPosition();
 		})
 	}
-	modal.addEventListener('click', function() {
-		modal.classList.remove('_active');
-		bodyUnfixPosition();
-	})
-	const modalClose = modal.querySelector('.modal__close');
-	modalClose.addEventListener('click', function(e) {
-		modal.classList.remove('_active');
-		bodyUnfixPosition();
-	})
-	const modalContainer = modal.querySelector('.modal__container');
-	modalContainer.addEventListener('click', function(e) {
-		e.stopPropagation();
-	})
+	for (let index = 0; index < modal.length; index++) {
+		const element = modal[index];
+		element.addEventListener('click', function() {
+			element.classList.remove('_active');
+			bodyUnfixPosition();
+		})
+		const modalClose = element.querySelector('.modal__close');
+		modalClose.addEventListener('click', function(e) {
+			element.classList.remove('_active');
+			bodyUnfixPosition();
+		})
+		const modalContainer = element.querySelector('.modal__container');
+		modalContainer.addEventListener('click', function(e) {
+			e.stopPropagation();
+		})
+	}
 }
 const masks = document.querySelectorAll('.mask');
 if (masks.length) {
