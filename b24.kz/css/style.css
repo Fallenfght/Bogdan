@@ -3192,6 +3192,29 @@ body .btn-top._visible {
   margin: 0px 30px 0px 0px;
 }
 
+.nav-stroke__item .nav-stroke__item-hover {
+  position: relative;
+}
+
+.nav-stroke__item .nav-stroke__item-hover::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #fff;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.nav-stroke__item._active > .nav-stroke__item-hover::after,
+.nav-stroke__item._active > .nav-stroke__item-text > .nav-stroke__item-hover::after {
+  opacity: 1;
+}
+
 .nav-stroke__item-with-drop {
   position: relative;
 }
@@ -3279,6 +3302,10 @@ body .btn-top._visible {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.nav-stroke .nav-stroke__drop-item._active .nav-stroke__item-hover:after {
+  opacity: 1;
 }
 
 .phones {
@@ -3434,6 +3461,16 @@ body .btn-top._visible {
 
 .nav-column__item:last-child {
   margin: 0px 0px 0px 0px;
+}
+
+.nav-column__item._active {
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+}
+
+.nav-column__item._active .link-hover-underline::after {
+  display: none;
 }
 
 .nav-column__second-lvl {
@@ -4582,6 +4619,15 @@ body .btn-top._visible {
     margin: 40px 0px 0px 0px;
   }
 
+  .about__slider-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+  }
+
+  .about__slider-pagination .swiper-pagination-bullet:hover {
+    background: #40C0F0;
+  }
+
   .about__arrow {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5364,24 +5410,6 @@ body .btn-top._visible {
     width: 200px;
   }
 
-  .nav-stroke__item .nav-stroke__item-hover {
-    position: relative;
-  }
-
-  .nav-stroke__item .nav-stroke__item-hover::after {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #fff;
-    opacity: 0;
-    -webkit-transition: opacity 0.3s ease;
-    -o-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
-  }
-
   .nav-stroke__item .nav-stroke__item-text:hover .nav-stroke__item-hover::after,
   .nav-stroke__item:hover:not(.nav-stroke__item-with-drop) .nav-stroke__item-hover::after {
     opacity: 1;
@@ -5615,6 +5643,10 @@ body .btn-top._visible {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 459px;
             flex: 0 0 459px;
+  }
+
+  .about__slider-pagination {
+    margin: 10px 0px 0px 0px;
   }
 
   .about__arrow-right {
