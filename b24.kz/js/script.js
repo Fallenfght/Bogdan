@@ -238,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				menu.classList.add('_active');
 				header.classList.add('burger_active');
 			}
-			
 		})
 	}
 })
