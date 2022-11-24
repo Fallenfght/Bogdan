@@ -573,6 +573,41 @@ a .link-hover-underline:after {
   margin: 0 auto;
 }
 
+.about .about__img-404 {
+  width: 472px;
+  height: 452px;
+  position: relative;
+}
+
+.about .about__img-404-all {
+  position: absolute;
+}
+
+.about .about__img-404-rocket {
+  top: 0;
+  z-index: 3;
+}
+
+.about .about__img-404-light {
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  top: 144px;
+  z-index: 2;
+  -webkit-animation: blinking 15s linear infinite;
+          animation: blinking 15s linear infinite;
+}
+
+.about .about__img-404-cloud {
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  z-index: 1;
+}
+
 .test__container {
   overflow: hidden;
 }
@@ -3808,6 +3843,34 @@ body .btn-top._visible {
 
   100% {
     width: 100%;
+  }
+}
+
+@-webkit-keyframes blinking {
+  0%, 35%, 37%, 39%, 41%, 45%, 60%, 80%, 90% {
+    opacity: 0;
+  }
+
+  1%, 34%, 36%, 40%, 44%, 46%, 59%, 61%, 79%, 91% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blinking {
+  0%, 35%, 37%, 39%, 41%, 45%, 60%, 80%, 90% {
+    opacity: 0;
+  }
+
+  1%, 34%, 36%, 40%, 44%, 46%, 59%, 61%, 79%, 91% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
