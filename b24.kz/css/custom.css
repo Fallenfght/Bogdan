@@ -6,6 +6,9 @@
   position: sticky;
   background: #263E88;
 }
-@supports (-webkit-appearance:none){
-
+.services__container {
+	max-width: 1628px;
+}
+.nav-stroke .nav-stroke__drop-item:visited {
+	color: #0053aa;
 }
