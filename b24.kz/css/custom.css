@@ -9,6 +9,6 @@
 .services__container {
 	max-width: 1628px;
 }
-.nav-stroke .nav-stroke__drop-item:visited {
+.nav-stroke .nav-stroke__drop-item:visited, .phones__drop .phones__drop-item:visited {
 	color: #0053aa;
 }
