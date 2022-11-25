@@ -1284,3 +1284,14 @@ p {
     width: 841px;
   }
 }
+@supports (-webkit-appearance:none){
+
+}
+
+ @media (min-width: 1600px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
