@@ -674,7 +674,7 @@ p {
 }
 
 .kss .realization {
-  padding-bottom: 33px;
+  padding-bottom: 53px;
 }
 
 .kss .realization__container {
@@ -1154,10 +1154,6 @@ p {
   margin: 45px 0px 0px 0px;
 }
 
-body {
-  color: test;
-}
-
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -1287,15 +1283,4 @@ body {
   .kss .tabs__item-drop {
     width: 841px;
   }
-}
-@supports (-webkit-appearance:none){
-
-}
-
- @media (min-width: 1600px){
-
-@supports (-webkit-appearance:none){
-
-}
-
 }

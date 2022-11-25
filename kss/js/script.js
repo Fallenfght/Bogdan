@@ -31,17 +31,33 @@ if (tabs.length) {
 	for (let index = 0; index < tabs.length; index++) {
 		const element = tabs[index];
 		const items = element.querySelectorAll('.tabs__item');
+		let idInterval = setSlidesInterval(element);
 		for (let index = 0; index < items.length; index++) {
-			const element = items[index];
-			const button = element.querySelector('.tabs__item-button');
+			const elementChild = items[index];
+			const button = elementChild.querySelector('.tabs__item-button');
 			button.addEventListener('click', function() {
+				clearInterval(idInterval);
+				idInterval = setSlidesInterval(element);
 				for (let index = 0; index < items.length; index++) {
-					const element = items[index];
-					element.classList.remove('_active');
+					const elementChild = items[index];
+					elementChild.classList.remove('_active');
 				}
-				element.classList.add('_active');
+				elementChild.classList.add('_active');
 			})
 		}
 	}
+}
+function setSlidesInterval(element) {
+	let idInterval = setInterval(function changeSlide() {
+		const currentElem = element.querySelector('.tabs__item._active');
+		currentElem.classList.remove('_active');
+		const nextElem = currentElem.nextElementSibling;
+		if (nextElem) {
+			nextElem.classList.add('_active');
+		} else {
+			element.querySelector('.tabs__item').classList.add('_active');
+		}
+	}, 7000);
+	return idInterval;
 }
 })
