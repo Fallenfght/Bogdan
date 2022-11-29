@@ -109,9 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				if (element.querySelector('.test_autoplay_long')) {
 					autoplaySpeed = 14000;
 				}
+				let arrows = false;
+				if (element.querySelector('.swiper_arrows')) {
+					arrows = true;
+				}
 				const swiperTest = new Swiper(element.querySelector('.swiper'), {
 					loop: true,
 					spaceBetween: 0,
+					grabCursor: true,
 					slidesPerView: 1,
 					centeredSlides: true,
 					autoplay: {
@@ -129,6 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
 					},
 					navigation: {
 						enabled: false,
+						nextEl: '.arrow-right',
+						prevEl: '.arrow-left',
 					},
 					breakpoints: {
 						1024: {
@@ -136,6 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
 								enabled: true,
 							},
 						},
+						1440: {
+							navigation: {
+								enabled: arrows,
+							}
+						}
 					}
 				})
 				swiperTest.autoplay.stop();
@@ -342,12 +354,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (usersButtons.length) {
 		for (let index = 0; index < usersButtons.length; index++) {
 			const element = usersButtons[index];
+			const parent = element.parentElement.parentElement.parentElement;
 			element.addEventListener('click', function() {
 				for (let index = 0; index < usersButtons.length; index++) {
 					const element = usersButtons[index];
 					element.classList.remove('_active');
 				}
 				this.classList.add('_active');
+				changeSelect(this.dataset, parent)
 			})
 		}
 	}
@@ -358,11 +372,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (let index = 0; index < selects.length; index++) {
 			const element = selects[index];
 			const mainItem = element.querySelector('.select__main-item');
+			const parent = element.parentElement.parentElement.parentElement;
 			element.addEventListener('click', function(e) {
 				e.stopPropagation();
 				this.classList.toggle('_active');
 				if (e.target.classList.contains('select__drop-item')) {
 					mainItem.innerHTML= e.target.innerHTML;
+					changeSelect(e.target.dataset, parent);
 				}
 			})
 		}
@@ -532,89 +548,61 @@ if (sliderButton.length > 0) {
 	}
 }
 })
-const modal = document.querySelectorAll('body>.modal');
-const buttonModal = document.querySelectorAll('.btn-modal-consult');
-if (modal.length && buttonModal.length) {
-	for (let index = 0; index < buttonModal.length; index++) {
-		const element = buttonModal[index];
-		element.addEventListener('click', function(e) {
-			e.preventDefault();
-			for (let index = 0; index < modal.length; index++) {
-				const element = modal[index];
-				element.classList.add('_active');
+function changeSelect(data, parent) {
+	const licensesItem = parent.querySelectorAll('.licenses__item');
+	if (licensesItem.length) {
+		if (data.price) {
+			for (let index = 0; index < licensesItem.length; index++) {
+				const price = licensesItem[index].querySelector('.licenses__current-price');
+				const oldPrice = licensesItem[index].querySelector('.licenses__old-price') || '';
+				changeText(data, price, index, oldPrice);
 			}
-			bodyFixPosition();
-		})
-	}
-	for (let index = 0; index < modal.length; index++) {
-		const element = modal[index];
-		element.addEventListener('click', function() {
-			element.classList.remove('_active');
-			bodyUnfixPosition();
-		})
-		const modalClose = element.querySelector('.modal__close');
-		modalClose.addEventListener('click', function(e) {
-			element.classList.remove('_active');
-			bodyUnfixPosition();
-		})
-		const modalContainer = element.querySelector('.modal__container');
-		modalContainer.addEventListener('click', function(e) {
-			e.stopPropagation();
-		})
+		}
+	} else {
+		if (data.price) {
+			const price = parent.querySelector(".licenses__current-price");
+			if (price) {
+				const oldPrice = parent.querySelector('.licenses__old-price') || '';
+				changeText(data, price, 0, oldPrice);
+			}
+		}
+		
 	}
 }
-const masks = document.querySelectorAll('.mask');
-if (masks.length) {
-	Inputmask({
-		mask: "+7 (999) 999 99 99",
-		showMaskOnHover: false,
-	}).mask(masks);
-}
-// 1. Фиксация <body>
-function bodyFixPosition() {
-
-  setTimeout( function() {
-  /* Ставим необходимую задержку, чтобы не было «конфликта» в случае, если функция фиксации вызывается сразу после расфиксации (расфиксация отменяет действия расфиксации из-за одновременного действия) */
-
-    if ( !document.body.hasAttribute('data-body-scroll-fix') ) {
-
-      // Получаем позицию прокрутки
-      let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Ставим нужные стили
-      document.body.setAttribute('data-body-scroll-fix', scrollPosition); // Cтавим атрибут со значением прокрутки
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = '-' + scrollPosition + 'px';
-      document.body.style.left = '0';
-      document.body.style.width = '100%';
-
-    }
-
-  }, 15 ); /* Можно задержку ещё меньше, но у меня работало хорошо именно с этим значением на всех устройствах и браузерах */
-
-}
-// 2. Расфиксация <body>
-function bodyUnfixPosition() {
-
-  if ( document.body.hasAttribute('data-body-scroll-fix') ) {
-
-    // Получаем позицию прокрутки из атрибута
-    let scrollPosition = document.body.getAttribute('data-body-scroll-fix');
-
-    // Удаляем атрибут
-    document.body.removeAttribute('data-body-scroll-fix');
-
-    // Удаляем ненужные стили
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.width = '';
-
-    // Прокручиваем страницу на полученное из атрибута значение
-    window.scroll(0, scrollPosition);
-
-  }
-
+function changeText(data, price, index, oldPrice) {
+	const dataPrice = String(data.price).split(",");
+	const dataDiscount = String(data.discount).split(',');
+	const dataEnding = String(data.ending).split(',');
+	let text = '';
+	if (dataPrice[index] || dataDiscount[index]) {
+		if (dataPrice[index]) {
+			text = dataPrice[index];
+			if (data.ending && dataEnding[index]) {
+				text = text + ' ' + dataEnding[index];
+			} else {
+				text = text + ' ' + '₸/мес';
+			}
+		}
+		if (dataDiscount[index] && data.discount && dataDiscount[index] != 0) {
+			text = text + '<span class="licenses__price-procent procent-yellow">' + dataDiscount[index] + '%'  +'</span>';
+		}
+		price.innerHTML = text;
+	}
+	if (oldPrice) {
+		const dataOldPrice = String(data.old_price).split(',');
+		if (data.old_price) {
+			let text = '';
+			if (dataOldPrice[index] != 0) {
+				if (dataOldPrice[index]) {
+					text = dataOldPrice[index];
+				}
+				if (data.ending && dataEnding[index] && dataOldPrice[index]) {
+					text = text + ' ' + dataEnding[index];
+				} else {
+					text = text + ' ' + '₸/мес';
+				}
+			}
+			oldPrice.innerHTML = text;
+		}
+	}
 }

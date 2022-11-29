@@ -1,0 +1,1 @@
+#bx-panel{z-index:1001!important}#bx-panel~.header:not(._active){position:sticky;background:#263e88;-webkit-transition:none;-o-transition:none;transition:none}.main>[id^=bx_incl_area]:first-child{padding-top:0}.main>[id^=bx_incl_area]:first-child section{padding-top:90px}@media (min-width:1024px){.main>[id^=bx_incl_area]:first-child section{padding-top:150px}}
