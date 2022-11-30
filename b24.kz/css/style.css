@@ -486,6 +486,7 @@ a .link-hover-underline:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: auto;
 }
 
 .about__info {
@@ -539,12 +540,12 @@ a .link-hover-underline:after {
   display: none;
 }
 
-.about__slider-pagination {
+.about .about__slider-pagination {
   position: static;
   margin: 30px 0px 0px 0px;
 }
 
-.about__slider-pagination .swiper-pagination-bullet {
+.about .about__slider-pagination .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   opacity: 1;
@@ -554,7 +555,7 @@ a .link-hover-underline:after {
   transition: background 0.3s ease;
 }
 
-.about__slider-pagination .swiper-pagination-bullet-active {
+.about .about__slider-pagination .swiper-pagination-bullet-active {
   background: #40C0F0;
 }
 
@@ -4839,16 +4840,16 @@ body .btn-top._visible {
     font-size: 21px;
   }
 
-  .about__slider-pagination {
+  .about .about__slider-pagination {
     margin: 40px 0px 0px 0px;
   }
 
-  .about__slider-pagination .swiper-pagination-bullet {
+  .about .about__slider-pagination .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
   }
 
-  .about__slider-pagination .swiper-pagination-bullet:hover {
+  .about .about__slider-pagination .swiper-pagination-bullet:hover {
     background: #40C0F0;
   }
 
@@ -5882,6 +5883,7 @@ body .btn-top._visible {
 @media (min-width: 1600px) {
   .about__info {
     margin: 0px 30px 0px 0px;
+    padding-bottom: 76px;
   }
 
   .about__img {
@@ -5890,10 +5892,15 @@ body .btn-top._visible {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 459px;
             flex: 0 0 459px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
   }
 
-  .about__slider-pagination {
-    margin: 10px 0px 0px 0px;
+  .about .about__slider-pagination {
+    position: absolute;
+    width: calc(100% - 489px);
+    text-align: right;
+    bottom: 40px;
   }
 
   .about__arrow-right {
@@ -5902,6 +5909,10 @@ body .btn-top._visible {
 
   .about__arrow-left {
     left: -100px;
+  }
+
+  .about__btn-container {
+    margin: -76px 0px 0px 0px;
   }
 
   .services__wrapper-gray {
@@ -5949,12 +5960,12 @@ body .btn-top._visible {
             flex: 0 0 677px;
   }
 
-  .about__arrow-left {
-    left: -318px;
+  .about .about__slider-pagination {
+    width: calc(100% - 707px);
   }
 
-  .about__btn-container {
-    margin: -20px 0px 0px 0px;
+  .about__arrow-left {
+    left: -318px;
   }
 }
 

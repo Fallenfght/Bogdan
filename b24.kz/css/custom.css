@@ -1,36 +1,21 @@
 #bx-panel {
-  z-index: 1001 !important;
+	z-index: 1001 !important;
 }
-
 #bx-panel ~ .header:not(._active) {
-  position: sticky;
-  background: #263E88;
-  -webkit-transition: none;
-  -o-transition: none;
-  transition: none;
+	position: sticky;
+	background: #263E88;
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
 }
-
 .main > *[id^=bx_incl_area]:first-child {
-  padding-top: 0;
+	padding-top: 0;
 }
-
 .main > *[id^=bx_incl_area]:first-child section {
-  padding-top: 90px;
+	padding-top: 90px;
 }
-
 @media (min-width: 1024px) {
-  .main > *[id^=bx_incl_area]:first-child section {
-    padding-top: 150px;
-  }
-}
-@supports (-webkit-appearance:none){
-
-}
-
- @media (min-width: 1024px){
-
-@supports (-webkit-appearance:none){
-
-}
-
+	.main > *[id^=bx_incl_area]:first-child section {
+		padding-top: 150px;
+	}
 }
