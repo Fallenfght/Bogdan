@@ -1539,6 +1539,12 @@ body .btn-top._visible {
   margin: 0px 0px 0px 0px;
 }
 
+.why__item-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .why__text {
   font-size: 16px;
   line-height: 26px;
@@ -1580,6 +1586,10 @@ body .btn-top._visible {
 }
 
 .why__arrow {
+  display: none;
+}
+
+.why.test .why__item:before {
   display: none;
 }
 
@@ -6108,113 +6118,4 @@ body .btn-top._visible {
   .tab-points__items._row .tab-points__item-head {
     font-size: 18px;
   }
-}
-@supports (-webkit-appearance:none){
-.about{background:center/cover no-repeat url("../img/about/about-bg.webp")}
-.benefits{background:center/cover no-repeat url("../img/benefits/benefits-bg-mobile.webp")}
-.modal__container{background:right bottom/cover no-repeat url("../img/modal/bg.webp") #fff}
-}
-
- @media (min-width: 375px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 425px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 768px){
-
-@supports (-webkit-appearance:none){
-.benefits{background:center/cover no-repeat url("../img/benefits/benefits-bg.webp")}
-}
-
-}
-
- @media (min-width: 1024px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 1440px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 1600px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 1920px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (max-width: 1023px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (max-width: 767px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (max-width: 425px){
-
-@supports (-webkit-appearance:none){
-.header__menu{background:left center/cover no-repeat url("../img/menu/menu-bg.webp"), #fff}
-}
-
-}
-
- @media (max-width: 399px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 768px) and (max-width: 1023px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media (min-width: 375px) and (min-width: 1024px) and (max-width: 1199px){
-
-@supports (-webkit-appearance:none){
-
-}
-
 }
