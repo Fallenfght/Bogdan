@@ -4596,11 +4596,10 @@ body .btn-top._visible {
             box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
     position: absolute;
     padding: 60px;
-    width: 408px;
+    width: 500px;
     height: auto;
     border-radius: 30px;
     max-height: 100%;
-    max-width: 500px;
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -5894,6 +5893,7 @@ body .btn-top._visible {
             flex: 0 0 459px;
     -ms-flex-item-align: end;
         align-self: flex-end;
+    text-align: center;
   }
 
   .about .about__slider-pagination {
