@@ -2340,13 +2340,16 @@ body .btn-top._visible {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .select .select__procent {
-  margin: 0px 0px 0px 20px;
+  margin: 0px 0px 0px 10px;
   font-weight: 600;
   padding: 5px 10px;
   pointer-events: none;
@@ -4435,10 +4438,6 @@ body .btn-top._visible {
 
   .select {
     width: 172px;
-  }
-
-  .select .select__procent {
-    margin: 0px 0px 0px 40px;
   }
 
   .tab-points__items {
