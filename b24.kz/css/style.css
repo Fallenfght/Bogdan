@@ -1102,6 +1102,10 @@ body .portfolio__item-button:hover .button-with-arrow__text:after {
   text-align: center;
 }
 
+.partners__items {
+  overflow: hidden;
+}
+
 .partners__items-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -2177,6 +2181,47 @@ body .btn-top._visible {
 
 .licenses__img-block-text {
   line-height: 28px;
+}
+
+.licenses__points {
+  margin: 0px 0px 20px 0px;
+}
+
+.licenses__points-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -5px;
+}
+
+.licenses__points-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 10px);
+          flex: 0 0 calc(50% - 10px);
+  margin: 0px 5px 20px;
+}
+
+.licenses .licenses__points-img {
+  margin: 0px 5px 0px 0px;
+  width: 20px;
+  height: 20px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20px;
+          flex: 0 0 20px;
+}
+
+.licenses__points-text {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.licenses__points-text .question__elem {
+  margin: 0px 0px 0px 6px;
 }
 
 .additionally__container {
@@ -4414,6 +4459,31 @@ body .btn-top._visible {
     margin: 0px 48px 0px 0px;
   }
 
+  .licenses__points-container {
+    margin: 0 -10px;
+  }
+
+  .licenses__points-item {
+    margin: 0px 10px 20px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(33.333% - 20px);
+            flex: 0 0 calc(33.333% - 20px);
+  }
+
+  .licenses .licenses__points-img {
+    margin: 0px 15px 0px 0px;
+    width: 25px;
+    height: 25px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25px;
+            flex: 0 0 25px;
+  }
+
+  .licenses__points-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
   .additionally__head {
     font-size: 21px;
     line-height: 26px;
@@ -5454,6 +5524,12 @@ body .btn-top._visible {
     font-size: 32px;
     line-height: 40px;
     margin: 0px auto 40px;
+  }
+
+  .licenses__points-item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(20% - 20px);
+            flex: 0 0 calc(20% - 20px);
   }
 
   .tab__buttons {
