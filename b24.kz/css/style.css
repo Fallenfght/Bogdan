@@ -437,7 +437,8 @@ a .link-hover-underline:after {
 }
 
 .main__slider-grab {
-  padding: 30px 0px;
+  padding: 30px 0px 60px;
+  margin-bottom: -30px;
 }
 
 .main__portfolio-one {
@@ -565,6 +566,8 @@ a .link-hover-underline:after {
 
 .about__btn-container {
   margin: -10px 0 0 0;
+  position: relative;
+  z-index: 3;
 }
 
 .about__btn {
@@ -2641,6 +2644,10 @@ body .btn-top._visible {
   margin: 0 auto;
 }
 
+.slider-grab {
+  overflow: hidden;
+}
+
 .slider-grab__head {
   text-align: center;
   margin: 0px 0px 60px 0px;
@@ -2993,6 +3000,10 @@ body .btn-top._visible {
 
 .slider-numbered__item-text:last-child {
   margin: 0px 0px 0px 0px;
+}
+
+.contacts {
+  overflow: hidden;
 }
 
 .contacts__container {
@@ -3748,6 +3759,10 @@ body .btn-top._visible {
   margin: 0px 0px 30px 0px;
 }
 
+.modal__input-container {
+  position: relative;
+}
+
 .modal__input {
   margin: 0px 0px 20px 0px;
 }
@@ -3810,6 +3825,7 @@ body .btn-top._visible {
   background: #F6F6F6;
   border-radius: 100px;
   padding: 24px 20px 10px;
+  border: 0;
   width: 100%;
   font-size: 18px;
   line-height: 22px;
@@ -3879,7 +3895,7 @@ body .btn-top._visible {
   display: none;
   text-align: left;
   color: #DD4949;
-  margin: 20px 0px 0px 0px;
+  margin: 0px 0px 10px 0px;
   font-size: 12px;
   line-height: 15px;
 }
@@ -4516,14 +4532,14 @@ body .btn-top._visible {
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    margin: 0 -15px 0px;
+    margin: 0 -14px 0px;
   }
 
   .tab-points__item {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 calc(50% - 30px);
-            flex: 0 0 calc(50% - 30px);
-    margin: 0 15px 30px;
+        -ms-flex: 0 0 calc(50% - 28px);
+            flex: 0 0 calc(50% - 28px);
+    margin: 0 14px 28px;
   }
 
   .tab-points__item-img {
@@ -4679,6 +4695,10 @@ body .btn-top._visible {
   .modal__close {
     right: 22px;
     top: 22px;
+  }
+
+  .input__error {
+    margin: 0px 0px 20px 0px;
   }
 }
 
@@ -4875,7 +4895,8 @@ body .btn-top._visible {
   }
 
   .main__slider-grab {
-    padding: 40px 0;
+    padding: 40px 0 70px;
+    margin-bottom: -30px;
   }
 
   .main__portfolio-one {
@@ -4883,7 +4904,8 @@ body .btn-top._visible {
   }
 
   .main__contacts {
-    padding: 40px 0;
+    padding: 40px 0 60px;
+    margin: 0px 0px -20px 0px;
   }
 
   .main .main__map {
@@ -5940,8 +5962,8 @@ body .btn-top._visible {
 
   .tab-points__items._flex-5 .tab-points__item {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 calc(20% - 30px);
-            flex: 0 0 calc(20% - 30px);
+        -ms-flex: 0 0 calc(20% - 28px);
+            flex: 0 0 calc(20% - 28px);
   }
 
   .nav-stroke__item {
@@ -6045,6 +6067,10 @@ body .btn-top._visible {
 }
 
 @media (max-width: 1023px) {
+  .only-desktop {
+    display: none;
+  }
+
   .reviews__slider-pagination {
     position: static;
     margin: 40px 0px 0px 0px;
