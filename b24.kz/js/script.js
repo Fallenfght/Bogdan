@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				slidesPerView: 1,
 				centeredSlides: true,
 				effect: 'fade',
+				grabCursor: true,
 				fadeEffect: {
 					crossFade: true
 				},
