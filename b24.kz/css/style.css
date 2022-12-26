@@ -1740,6 +1740,18 @@ body .btn-top._visible {
   line-height: 23px;
 }
 
+.licenses__points-item-link {
+  color: #0053AA;
+}
+
+.licenses__points-item-link:visited {
+  color: #0053AA;
+}
+
+.licenses__points-item-link .link-hover-underline:after {
+  opacity: 1;
+}
+
 .licenses__accordion-head {
   margin: 0px 0px 10px 0px;
   text-align: center;
@@ -5503,6 +5515,10 @@ body .btn-top._visible {
 
   .top-partner__item:hover {
     background: rgba(255, 255, 255, 0.6);
+  }
+
+  .licenses__points-item-link:hover .link-hover-underline:after {
+    opacity: 0;
   }
 
   .licenses__accordion {
