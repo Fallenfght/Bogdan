@@ -3237,6 +3237,10 @@ body .btn-top._visible {
   border-radius: 30px;
 }
 
+.person-info__item._img-full .person-info__item-img:after {
+  display: none;
+}
+
 .person-info__item-img {
   margin: 0px 0px 20px 0px;
   border-radius: 20px;
