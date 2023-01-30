@@ -548,6 +548,9 @@ if (sliderButton.length > 0) {
 		};
 	}
 }
+	Fancybox.bind('.person-info__flex-container a', {
+	groupAll : true,
+});
 })
 function changeSelect(data, parent) {
 	const licensesItem = parent.querySelectorAll('.licenses__item');
