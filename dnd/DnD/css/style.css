@@ -125,8 +125,8 @@ body {
 
 .hero-card h2 {
   font-weight: 600;
-  font-size: 40px;
-  line-height: 49px;
+  font-size: 28px;
+  line-height: 37px;
   margin: 0px 0px 20px 0px;
 }
 
@@ -144,8 +144,8 @@ body {
 
 .hero-card h4 {
   font-weight: 600;
-  font-size: 26px;
-  line-height: 36px;
+  font-size: 20px;
+  line-height: 30px;
   margin: 0px 0px 15px 0px;
 }
 
@@ -155,8 +155,8 @@ body {
 
 .hero-card h3 {
   font-weight: 600;
-  font-size: 30px;
-  line-height: 38px;
+  font-size: 18px;
+  line-height: 28px;
   margin: 0px 0px 15px 0px;
 }
 
@@ -167,8 +167,8 @@ body {
 .hero-card p,
 .hero-card li {
   font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 24px;
   margin: 0px 0px 15px 0px;
 }
 
@@ -192,12 +192,12 @@ body {
 
 .hero-card__item {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
   position: relative;
   background: #D0D0D0;
   border: #f9f9f9 1px solid;
-  padding: 50px;
+  padding: 15px;
 }
 
 .hero-card__element {
@@ -213,10 +213,9 @@ body {
   background: #fff;
   border-radius: 8px;
   padding: 7px;
-  padding-right: 150px;
   z-index: 2;
-  left: 80px;
-  top: 100px;
+  left: 20px;
+  top: 50px;
   font-weight: 600;
 }
 
@@ -226,6 +225,7 @@ body {
   border-radius: 40px;
   overflow: hidden;
   border: 2px solid #fff;
+  height: 250px;
 }
 
 .hero-card__img img {
@@ -312,11 +312,59 @@ body {
     padding: 0 15px;
   }
 }
+
+@media (min-width: 1600px) {
+  .hero-card h2 {
+    font-size: 40px;
+    line-height: 49px;
+  }
+
+  .hero-card h4 {
+    font-size: 26px;
+    line-height: 36px;
+  }
+
+  .hero-card h3 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .hero-card p,
+  .hero-card li {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .hero-card__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    padding: 50px;
+  }
+
+  .hero-card__name {
+    padding-right: 150px;
+    left: 80px;
+    top: 100px;
+  }
+
+  .hero-card__img {
+    height: 880px;
+  }
+}
 @supports (-webkit-appearance:none){
 
 }
 
  @media (min-width: 490px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media (min-width: 1600px){
 
 @supports (-webkit-appearance:none){
 
