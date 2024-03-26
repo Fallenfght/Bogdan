@@ -1,0 +1,6 @@
+#global_menu_global_menu_hoster_admin .adm-main-menu-item-icon {
+	background: url("../../images/hoster.admin/icons/siter.svg") no-repeat center / 40px 36px;
+}
+.hoster-info-icon {
+	background: center / 19px 19px no-repeat url("../../images/hoster.admin/icons/info-icon.png");
+}

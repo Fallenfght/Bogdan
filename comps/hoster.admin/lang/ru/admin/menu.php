@@ -1,0 +1,5 @@
+<?php
+$MESS["HOSTER_ADMIN_GLOBAL_MENU_TEXT"] = "Siter.kz";
+$MESS["HOSTER_ADMIN_GLOBAL_MENU_TITLE"] = "Siter.kz";
+$MESS["HOSTER_ADMIN_MENU_TEXT"] = "Информация";
+$MESS["HOSTER_ADMIN_MENU_TITLE"] = "Информация";
