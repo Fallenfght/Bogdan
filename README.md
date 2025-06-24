@@ -15,7 +15,7 @@
 ---
 
 ## 🛠️ Как запустить
-
-Открой файл `index.html` в браузере.
+https://fallenfght.github.io/Bogdan/minesweeper/ - сапер
+https://fallenfght.github.io/Bogdan/snake/ - змейка
 
 ---
