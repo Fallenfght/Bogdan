@@ -15,7 +15,6 @@
 ---
 
 ## 🛠️ Как запустить
-https://fallenfght.github.io/Bogdan/minesweeper/ - сапер
-https://fallenfght.github.io/Bogdan/snake/ - змейка
 
----
+[Сапёр](https://fallenfght.github.io/Bogdan/minesweeper/)
+[Змейка](https://fallenfght.github.io/Bogdan/snake/)
