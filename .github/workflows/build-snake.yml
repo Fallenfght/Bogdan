@@ -3,6 +3,8 @@ name: Build Snake
 on:
   push:
     branches: [main]
+    paths:
+      - 'snake/src/**'
 
 jobs:
   build:
@@ -29,8 +31,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Добавляем только если действительно есть изменения
           if ! git diff --quiet snake/index.html; then
             git add snake/index.html
             git commit -m "build: automatic snake update [skip ci]"
