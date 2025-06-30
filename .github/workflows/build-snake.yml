@@ -2,26 +2,37 @@ name: Build Snake
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Клонируем репозиторий
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 📦 Устанавливаем Node.js
+      - name: 📦 Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: 📁 Переходим в папку src змейки
+      - name: 📂 Install deps
         working-directory: snake/src
         run: npm ci
 
-      - name: 🛠️ Собираем игру
+      - name: 🛠️ Build
         working-directory: snake/src
         run: npm run build
+
+      - name: ✅ Commit & push index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Добавляем только если действительно есть изменения
+          if ! git diff --quiet snake/index.html; then
+            git add snake/index.html
+            git commit -m "build: automatic snake update [skip ci]"
+            git push
+          fi
