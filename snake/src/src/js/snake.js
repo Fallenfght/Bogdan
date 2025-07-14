@@ -64,8 +64,8 @@ export class Snake {
 				domElement.innerHTML = '<span class="snake__tongue"></span>';
 			}
 			const { x, y } = partElement;
-			domElement.style.left = `${x * 40}px`;
-			domElement.style.top = `${y * 40}px`;
+			domElement.style.left = `${x * this.game.config.cellSize}px`;
+			domElement.style.top = `${y * this.game.config.cellSize}px`;
 			this.container.appendChild(domElement);
 			partElement.element = domElement;
 		}
@@ -253,13 +253,13 @@ export class Snake {
 		tail.y = tail.oldY;
 
 		const lastBodyPart = this.elements.body.length;
-		bodyPart.style.left = `${this.elements.body[lastBodyPart - 1].x * 40}px`;
-		bodyPart.style.top = `${this.elements.body[lastBodyPart - 1].y * 40}px`;
+		bodyPart.style.left = `${this.elements.body[lastBodyPart - 1].x * this.game.config.cellSize}px`;
+		bodyPart.style.top = `${this.elements.body[lastBodyPart - 1].y * this.game.config.cellSize}px`;
 		this.container.insertBefore(bodyPart, this.elements.tail.element);
 	}
-	setPartPosition(part) {
-		part.element.style.left = `${part.x * 40}px`;
-		part.element.style.top = `${part.y * 40}px`;
+	setPartPosition = (part) => {
+		part.element.style.left = `${part.x * this.game.config.cellSize}px`;
+		part.element.style.top = `${part.y * this.game.config.cellSize}px`;
 	}
 	updateSnakePos() {
 		this.setPartPosition(this.elements.head);

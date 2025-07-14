@@ -13,6 +13,7 @@ export class Game {
 			width: 10,
 			height: 10,
 			speed: 350,
+			cellSize: 40,
 			...config
 		};
 		this.map = new GameMap(this.config);
@@ -34,16 +35,24 @@ export class Game {
 		this.user.saveScore();
 		this.user.destroy();
 		if (this.bombTimeout) {
+			console.log(this.bombTimeout);
 			clearTimeout(this.bombTimeout);
+			this.bombTimeout = null;
+			console.log(this.bombTimeout);
 		}
 		if (this.scissorsTimeout) {
 			clearTimeout(this.scissorsTimeout);
+			this.scissorsTimeout = null;
 		}
 		if (isEnd == "END") {
 			alert("КОНЕЦ");
 		}
 	}
 	startBombLoop() {
+		console.log('started');
+		if (this.bombTimeout) {
+			clearTimeout(this.bombTimeout);
+		}
 		const timeout = getRandomInt(1500, 10000);
 		this.bombTimeout = setTimeout(() => {
 			if (this.map.bomb) {

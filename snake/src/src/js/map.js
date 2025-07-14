@@ -10,6 +10,12 @@ export class GameMap {
 		if (this.food) {
 			this.deleteFood(this.food.x, this.food.y);
 		}
+		if (this.bomb) {
+			this.deleteBomb(this.bomb.x, this.bomb.y);
+		}
+		if (this.scissors) {
+			this.deleteScissors(this.scissors.x, this.scissors.y);
+		}
 		this.config.container.innerHTML = "";
 		this.cells = [];
 	}

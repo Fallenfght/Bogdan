@@ -26,7 +26,7 @@ body {
 	flex-wrap: wrap;
 	position: relative;
 	width: 400px;
-	padding-right: 400px;
+	padding-bottom: 400px;
 }
 .game-board__cell {
 	width: 40px;
@@ -151,24 +151,25 @@ body {
 /*user*/
 .user {
 	position: absolute;
-	right: 0;
-	top: 0;
+	left: 0;
+	top: 400px;
 	padding: 15px;
 	color: #ffffff;
 	width: 400px;
+	max-width: 100%;
 	font-size: 20px;
 	line-height: 1;
 	font-weight: 700;
 	text-transform: uppercase;
 	box-sizing: border-box;
 }
-
 /*highscores*/
 .highscores {
 	position: absolute;
-	right: 0;
-	top: 66px;
+	left: 0;
+	top: 456px;
 	width: 400px;
+	max-width: 100%;
 	color: gold;
 	padding: 15px;
 	box-sizing: border-box;
@@ -226,3 +227,20 @@ body {
 		transform: scale(1) rotate(0deg) translateY(0);
 	}
 }
+/*media*/
+@media (min-width: 1024px) {
+	.game-board {
+		padding: 0px 400px 0px 0px;
+	}
+	.user {
+		right: 0;
+		left: auto;
+		top: 0;
+	}
+	.highscores {
+		right: 0;
+		top: 46px;
+		left: auto;
+	}
+}
+/*end*/
