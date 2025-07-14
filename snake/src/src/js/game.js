@@ -12,7 +12,7 @@ export class Game {
 			container: document.querySelector(".game-board"),
 			width: 10,
 			height: 10,
-			speed: 300,
+			speed: 350,
 			...config
 		};
 		this.map = new GameMap(this.config);

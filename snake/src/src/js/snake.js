@@ -282,7 +282,6 @@ export class Snake {
 			const direction = keyToDirectionMap[e.code];
 			if (direction && direction !== oppositeDirectionsMap[this.direction]) {
 				this.direction = direction;
-				console.log(this.direction);
 				clearInterval(this.game.interval);
 				this.move();
 				if (!this.game.started) {
@@ -317,7 +316,6 @@ export class Snake {
 				if (dy > 30 && this.direction !== 'top') this.direction = 'bottom';
 				else if (dy < -30 && this.direction !== 'bottom') this.direction = 'top';
 			}
-			console.log(this.direction);
 			clearInterval(this.game.interval);
 			this.move();
 			if (!this.game.started) {
@@ -330,7 +328,7 @@ export class Snake {
 			}, this.game.config.speed);
 		};
 		window.addEventListener('keydown', this.keyListener);
-		window.addEventListener('touchstart', this.touchStartListener, { passive: true });
-		window.addEventListener('touchend', this.touchEndListener, { passive: true });
+		window.addEventListener('touchstart', this.touchStartListener, { passive: false });
+		window.addEventListener('touchend', this.touchEndListener, { passive: false });
 	}
 }
