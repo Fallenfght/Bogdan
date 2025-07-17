@@ -35,18 +35,20 @@ export class Game {
 		this.user.saveScore();
 		this.user.destroy();
 		if (this.bombTimeout) {
-			console.log(this.bombTimeout);
-			clearTimeout(this.bombTimeout);
-			this.bombTimeout = null;
-			console.log(this.bombTimeout);
+			setTimeout(() => {
+				clearTimeout(this.bombTimeout);
+			}, 0);
+			
 		}
 		if (this.scissorsTimeout) {
-			clearTimeout(this.scissorsTimeout);
-			this.scissorsTimeout = null;
+			setTimeout(() => {
+				clearTimeout(this.scissorsTimeout);
+			}, 0);
 		}
 		if (isEnd == "END") {
-			alert("КОНЕЦ");
+			//alert("КОНЕЦ");
 		}
+		
 	}
 	startBombLoop() {
 		console.log('started');
