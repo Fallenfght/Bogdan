@@ -2,6 +2,7 @@ export class User {
 	constructor(config) {
 		this.config = {
 			mainContainer: config.container,
+			scoreContainer: document.querySelector('.score-board__container'),
 			score: 0,
 		};
 	}
@@ -11,7 +12,7 @@ export class User {
 		userInfo.textContent = `Score: ${this.config.score}`;
 		this.config.mainContainer.appendChild(userInfo);
 		this.scoreItem = userInfo;
-		this.showLeaders();
+		User.showLeaders();
 	}
 	saveScore() {
 		const finalScore = this.config.score;
@@ -21,8 +22,10 @@ export class User {
 		highscores = highscores.slice(0, 5);
 		localStorage.setItem('highscores', JSON.stringify(highscores));
 	}
-	showLeaders() {
+	static showLeaders() {
 		const highscoreBox = document.createElement('div');
+		const scoreContainer = document.querySelector('.score-board__container');
+		scoreContainer.innerHTML = '';
 		highscoreBox.classList.add('highscores');
 		const highscores = JSON.parse(localStorage.getItem('highscores')) || [];
 		if (highscores.length > 0) {
@@ -36,7 +39,7 @@ export class User {
 				scoreItem.textContent = `${index + 1}. ${score}`;
 				highscoreBox.appendChild(scoreItem);
 			});
-			this.config.mainContainer.appendChild(highscoreBox);
+			scoreContainer.appendChild(highscoreBox);
 		}
 	}
 	addScore (score) {
@@ -48,6 +51,7 @@ export class User {
 		this.scoreItem.textContent = `Score: ${this.config.score}`;
 	}
 	destroy () {
+		this.config.scoreContainer.innerHTML = '';
 		this.config.score = 0;
 	}
 }

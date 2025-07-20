@@ -3,18 +3,26 @@ body {
 	margin: 0;
 	padding: 15px;
 }
-.btn-start {
+.btn {
 	padding: 12px 24px;
 	font-size: 18px;
-	color: #fff;
-	background: linear-gradient(145deg, #43a047, #388e3c);
-	border: 3px solid #2e7d32;
 	border-radius: 8px;
 	cursor: pointer;
 	transition: all 0.2s ease;
 	text-transform: uppercase;
-	margin: 0 auto 40px;
 	font-family: inherit;
+}
+.btn-score {
+	margin: 0 auto 40px;
+	background: linear-gradient(145deg, #1976d2, #1565c0);
+	border: 3px solid #0d47a1;
+	color: #fff;
+}
+.btn-start {
+	background: linear-gradient(145deg, #43a047, #388e3c);
+	border: 3px solid #2e7d32;
+	color: #fff;
+	margin: 0 auto 15px;
 }
 .btn-start:hover {
 	background: linear-gradient(145deg, #4caf50, #43a047);
@@ -23,11 +31,9 @@ body {
 	transform: translateY(2px);
 }
 .game-board {
-	background: #333;
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
-	padding-bottom: 400px;
 }
 .game-board__cell {
 	width: 40px;
@@ -132,28 +138,6 @@ body {
 	transition: box-shadow 0.3s ease;
 	z-index: 5;
 }
-/*media*/
-@media (min-width: 426px) {
-	.game-board__cell--food, .game-board__cell--bomb, .game-board__cell--scissors {
-		font-size: 32px;
-	}
-}
-@media (min-width: 1024px) {
-	.game-board {
-		padding: 0px 400px 0px 0px;
-	}
-	.user {
-		right: 0;
-		left: auto;
-		top: 0;
-	}
-	.highscores {
-		right: 0;
-		top: 46px;
-		left: auto;
-	}
-}
-/*end*/
 .game-board__cell--food span {
 	animation: emojiDance 2s infinite ease-in-out;
 	box-shadow: 0 0 12px 6px rgba(255, 100, 100, 0.5);
@@ -174,27 +158,24 @@ body {
 /*user*/
 .user {
 	position: absolute;
-	left: 0;
-	top: 400px;
-	padding: 15px;
+	left: 50%;
+	top: 0;
+	background: #333;
+	padding: 7px 5px;
+	border-radius: 4px;
+	transform: translate(-50%, -100%);
 	color: #ffffff;
-	width: 400px;
-	max-width: 100%;
 	font-size: 20px;
 	line-height: 1;
 	font-weight: 700;
 	text-transform: uppercase;
 	box-sizing: border-box;
+	margin-bottom: 15px;
+	white-space: nowrap;
 }
 /*highscores*/
 .highscores {
-	position: absolute;
-	left: 0;
-	top: 456px;
-	width: 400px;
-	max-width: 100%;
 	color: gold;
-	padding: 15px;
 	box-sizing: border-box;
 }
 .highscores__title {
@@ -206,6 +187,32 @@ body {
 	margin: 0 0 10px;
 	font-size: 14px;
 	line-height: 1;
+}
+/*score-board*/
+.score-board {
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.score-board__container {
+	padding: 30px 15px;
+	border-radius: 8px;
+	background: #333;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.score-board.score-board--active {
+	opacity: 1;
+	visibility: visible;
 }
 /*animations*/
 @keyframes tongueSqueeze {
@@ -250,3 +257,10 @@ body {
 		transform: scale(1) rotate(0deg) translateY(0);
 	}
 }
+/*media*/
+@media (min-width: 426px) {
+	.game-board__cell--food, .game-board__cell--bomb, .game-board__cell--scissors {
+		font-size: 24px;
+	}
+}
+/*end*/

@@ -19,8 +19,6 @@ export class Game {
 		};
 		if (screenWidth < 425) {
 			const adaptiveCellSize = Math.floor(screenWidth / this.config.width);
-			console.log(screenWidth);
-			console.log(adaptiveCellSize);
 			this.config.cellSize = adaptiveCellSize;
 			this.config.height = this.config.width;
 		}
@@ -54,7 +52,6 @@ export class Game {
 			}, 0);
 		}
 		if (isEnd == "END") {
-			console.log(this.user);
 			alert("Ваш счет: " + this.user.config.score);
 		}
 		this.user.destroy();
