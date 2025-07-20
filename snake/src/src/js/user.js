@@ -40,6 +40,8 @@ export class User {
 				highscoreBox.appendChild(scoreItem);
 			});
 			scoreContainer.appendChild(highscoreBox);
+		} else {
+			scoreContainer.innerHTML = "Сыграйте, чтобы занять свое место!";
 		}
 	}
 	addScore (score) {
