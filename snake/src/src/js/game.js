@@ -8,6 +8,7 @@ import { getRandomInt } from "./utils.js";
 
 export class Game {
 	constructor(config) {
+		const screenWidth = window.innerWidth - 30;
 		this.config = {
 			container: document.querySelector(".game-board"),
 			width: 10,
@@ -16,6 +17,14 @@ export class Game {
 			cellSize: 40,
 			...config
 		};
+		if (screenWidth < 425) {
+			const adaptiveCellSize = Math.floor(screenWidth / this.config.width);
+			console.log(screenWidth);
+			console.log(adaptiveCellSize);
+			this.config.cellSize = adaptiveCellSize;
+			this.config.height = this.config.width;
+		}
+		this.config.containerWidth = Number(this.config.width) * Number(this.config.cellSize);
 		this.map = new GameMap(this.config);
 		this.user = new User(this.config);
 		this.snake = new Snake(this, this.map, this.user);
@@ -33,7 +42,6 @@ export class Game {
 		this.snake.destroy();
 		this.map.destroy();
 		this.user.saveScore();
-		this.user.destroy();
 		if (this.bombTimeout) {
 			setTimeout(() => {
 				clearTimeout(this.bombTimeout);
@@ -46,12 +54,12 @@ export class Game {
 			}, 0);
 		}
 		if (isEnd == "END") {
-			//alert("КОНЕЦ");
+			console.log(this.user);
+			alert("Ваш счет: " + this.user.config.score);
 		}
-		
+		this.user.destroy();
 	}
 	startBombLoop() {
-		console.log('started');
 		if (this.bombTimeout) {
 			clearTimeout(this.bombTimeout);
 		}
@@ -65,6 +73,9 @@ export class Game {
 		}, timeout);
 	}
 	startScissorsLoop() {
+		if (this.scissorsTimeout) {
+			clearTimeout(this.scissorsTimeout);
+		}
 		const timeout = getRandomInt(10000, 30000);
 		this.scissorsTimeout = setTimeout(() => {
 			if (this.map.scissors) {

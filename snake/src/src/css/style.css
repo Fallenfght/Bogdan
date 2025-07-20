@@ -1,5 +1,7 @@
 body {
 	font-family: 'Press Start 2P';
+	margin: 0;
+	padding: 15px;
 }
 .btn-start {
 	padding: 12px 24px;
@@ -25,7 +27,6 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
-	width: 400px;
 	padding-bottom: 400px;
 }
 .game-board__cell {
@@ -124,13 +125,35 @@ body {
 }
 .game-board__cell--food, .game-board__cell--bomb, .game-board__cell--scissors {
 	border: 1px solid #6d4c41;
-	font-size: 24px;
+	font-size: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	transition: box-shadow 0.3s ease;
 	z-index: 5;
 }
+/*media*/
+@media (min-width: 426px) {
+	.game-board__cell--food, .game-board__cell--bomb, .game-board__cell--scissors {
+		font-size: 32px;
+	}
+}
+@media (min-width: 1024px) {
+	.game-board {
+		padding: 0px 400px 0px 0px;
+	}
+	.user {
+		right: 0;
+		left: auto;
+		top: 0;
+	}
+	.highscores {
+		right: 0;
+		top: 46px;
+		left: auto;
+	}
+}
+/*end*/
 .game-board__cell--food span {
 	animation: emojiDance 2s infinite ease-in-out;
 	box-shadow: 0 0 12px 6px rgba(255, 100, 100, 0.5);
@@ -227,20 +250,3 @@ body {
 		transform: scale(1) rotate(0deg) translateY(0);
 	}
 }
-/*media*/
-@media (min-width: 1024px) {
-	.game-board {
-		padding: 0px 400px 0px 0px;
-	}
-	.user {
-		right: 0;
-		left: auto;
-		top: 0;
-	}
-	.highscores {
-		right: 0;
-		top: 46px;
-		left: auto;
-	}
-}
-/*end*/

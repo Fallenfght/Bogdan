@@ -21,10 +21,13 @@ export class GameMap {
 	}
 	create (container) {
 		const map = document.createDocumentFragment();
+		this.config.container.style.width = this.config.containerWidth + 'px';
 		for (let y = 0; y < this.height; y++) {
 			for (let x = 0; x < this.width; x++) {
 				const cell = document.createElement("div");
 				cell.classList.add("game-board__cell");
+				cell.style.width = this.config.cellSize + 'px';
+				cell.style.height = this.config.cellSize + 'px';
 				map.appendChild(cell);
 				if (!this.cells[x]) {
 					this.cells[x] = [];

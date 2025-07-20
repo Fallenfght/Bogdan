@@ -59,6 +59,8 @@ export class Snake {
 		this.container.classList.add("snake");
 		const createCell = (partElement, partKey) => {
 			const domElement = document.createElement("div");
+			domElement.style.width = this.game.config.cellSize + 'px';
+			domElement.style.height = this.game.config.cellSize + 'px';
 			domElement.classList.add(`snake__${partKey}`);
 			if (partKey == "head") {
 				domElement.innerHTML = '<span class="snake__tongue"></span>';
@@ -241,6 +243,8 @@ export class Snake {
 	createBodyPart() {
 		const { tail } = this.elements;
 		const bodyPart = document.createElement("div");
+		bodyPart.style.width = this.game.config.cellSize + 'px';
+		bodyPart.style.height = this.game.config.cellSize + 'px';
 		const classDirection = [...tail.element.classList].filter(cls => 
 			Object.values(directionClassMap).includes(cls)
 		);
