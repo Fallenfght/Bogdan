@@ -13,7 +13,7 @@ body {
 	font-family: inherit;
 }
 .btn-score {
-	margin: 0 auto 40px;
+	margin: 0 auto 60px;
 	background: linear-gradient(145deg, #1976d2, #1565c0);
 	border: 3px solid #0d47a1;
 	color: #fff;
@@ -175,6 +175,7 @@ body {
 }
 /*highscores*/
 .highscores {
+	white-space: nowrap;
 	color: gold;
 	box-sizing: border-box;
 }
@@ -197,6 +198,7 @@ body {
 	right: 0;
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 0.2s ease, visibility 0.2s ease;
